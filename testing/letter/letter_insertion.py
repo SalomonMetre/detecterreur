@@ -1,7 +1,7 @@
 from detecterreur.letter.letter_insertion import LetterInsertion
 
 def main():
-    li = LetterInsertion()
+    li = LetterInsertion(distance=2)
 
     # Read sentences from the file
     with open("testing/letter/sentences.txt", "r", encoding="utf-8") as f:
