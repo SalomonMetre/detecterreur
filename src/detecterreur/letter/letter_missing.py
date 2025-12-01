@@ -15,22 +15,21 @@ class LetterMissing:
         self.distance = distance
         self.punct_table = str.maketrans("", "", string.punctuation)
 
-    def has_missing_letter_error(self, sentence: str) -> bool:
+    def get_error(self, sentence: str):
         """
-        Returns True if any unknown word in the sentence contains a missing letter error.
-        Ignores punctuation. Returns False immediately if all words are known.
+        Returns a tuple (has_error, error_type).
+        True and "LMIS" if a missing-letter error is found, otherwise False, None.
         """
-        words = re.findall(r"\b\w+\b", sentence.lower())  # extract "real" words
+        words = re.findall(r"\b\w+\b", sentence.lower())
 
-        # Unknown words only
         unknown_words = [w for w in words if w not in self.spell]
         if not unknown_words:
-            return False
+            return False, None
 
         for w in unknown_words:
-            if self._is_missing_letter(w):
-                return True
-        return False
+            if self.is_error(w):
+                return True, "LMIS"
+        return False, None
 
     def correct(self, sentence: str) -> str:
         """
@@ -39,7 +38,6 @@ class LetterMissing:
         """
         corrected_words = []
 
-        # Split sentence by whitespace, keep punctuation attached
         tokens = re.findall(r"[\w']+|[^\s\w]", sentence)
 
         for word in tokens:
@@ -50,12 +48,11 @@ class LetterMissing:
                 corrected_word = word
             corrected_words.append(corrected_word)
 
-        # Join back preserving original spacing as best as possible
         return " ".join(corrected_words)
 
     # ---------- internal helper methods ----------
 
-    def _is_missing_letter(self, word: str) -> bool:
+    def is_error(self, word: str) -> bool:
         """
         Detects if a word likely has a missing letter
         by checking if any candidate can be obtained by adding a single letter.
@@ -76,7 +73,6 @@ class LetterMissing:
         if not stripped or stripped in self.spell:
             return word
 
-        # Candidates that can be obtained by adding one letter
         possible_corrections = []
         for candidate in self.spell.candidates(stripped):
             if len(candidate) == len(stripped) + 1:
@@ -86,7 +82,6 @@ class LetterMissing:
                         break
 
         if possible_corrections:
-            # pick the candidate with the highest usage frequency
             best = max(possible_corrections, key=lambda w: self.spell.word_usage_frequency(word=w))
             return word.replace(stripped, best)
 

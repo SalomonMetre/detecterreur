@@ -8,9 +8,9 @@ def main():
         sentences = [line.strip() for line in f if line.strip()]
 
     for s in sentences:
-        has_error = lo.has_order_error(s)
+        has_error, error_type = lo.get_error(s)
         print(f"Sentence: {s}")
-        print(f"Has letter-order error? {has_error}")
+        print(f"Has letter order error? {has_error}, Error type: {error_type}")
 
         if has_error:
             corrected = lo.correct(s)

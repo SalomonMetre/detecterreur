@@ -1,10 +1,11 @@
 import string
 from spellchecker import SpellChecker
+import re
 
-class LetterReplacement:
+class LetterSubstitution:
     def __init__(self, language="fr", distance=1):
         """
-        Initialize the LetterReplacement detector.
+        Initialize the LetterSubstitution detector.
 
         Args:
             language (str): Language code for SpellChecker.
@@ -14,30 +15,33 @@ class LetterReplacement:
         self.distance = distance
         self.punct_table = str.maketrans("", "", string.punctuation)
 
-    def has_replacement_error(self, sentence: str) -> bool:
+    def get_error(self, sentence: str):
         """
-        Returns True if any unknown word in the sentence contains a letter replacement error.
-        Ignores punctuation. Returns False immediately if all words are known.
+        Returns a tuple (has_error, error_type).
+        True and "LSUB" if a letter substitution error is found, otherwise False, None.
         """
-        words = [w.translate(self.punct_table).lower() for w in sentence.split() if w]
-
+        words = re.findall(r"\b\w+\b", sentence.lower())
         unknown_words = [w for w in words if w not in self.spell]
+
         if not unknown_words:
-            return False
+            return False, None
 
         for w in unknown_words:
-            if self._is_replacement_error(w):
-                return True
-        return False
+            if self.is_error(w):
+                return True, "LSUB"
+        return False, None
 
     def correct(self, sentence: str) -> str:
         """
-        Corrects letter replacement errors only for unknown words,
+        Corrects letter substitution errors only for unknown words,
         preserving original punctuation and casing.
         """
         corrected_words = []
 
-        for word in sentence.split():
+        # Split sentence into words/punctuation
+        tokens = re.findall(r"[\w']+|[^\s\w]", sentence)
+
+        for word in tokens:
             stripped = word.translate(self.punct_table).lower()
             if stripped and stripped not in self.spell:
                 corrected_word = self._fix_word(word)
@@ -49,14 +53,13 @@ class LetterReplacement:
 
     # ---------- internal helper methods ----------
 
-    def _is_replacement_error(self, word: str) -> bool:
+    def is_error(self, word: str) -> bool:
         """
-        Detects if a word likely contains a letter replacement error.
+        Detects if a word likely contains a single-letter substitution.
         """
         for candidate in self.spell.candidates(word):
             if len(candidate) != len(word):
                 continue
-            # Count positions where letters differ
             diff_count = sum(1 for a, b in zip(word, candidate) if a != b)
             if diff_count == 1:
                 return True
@@ -64,20 +67,17 @@ class LetterReplacement:
 
     def _fix_word(self, word: str) -> str:
         """
-        Corrects a single word with a letter replacement error using candidate frequencies,
+        Corrects a single word with a letter substitution error using candidate frequencies,
         preserving punctuation and casing.
         """
         stripped = word.translate(self.punct_table).lower()
         if not stripped or stripped in self.spell:
             return word
 
-        possible_corrections = []
-        for candidate in self.spell.candidates(stripped):
-            if len(candidate) != len(stripped):
-                continue
-            diff_count = sum(1 for a, b in zip(stripped, candidate) if a != b)
-            if diff_count == 1:
-                possible_corrections.append(candidate)
+        possible_corrections = [
+            c for c in self.spell.candidates(stripped)
+            if len(c) == len(stripped) and sum(1 for a, b in zip(stripped, c) if a != b) == 1
+        ]
 
         if possible_corrections:
             best = max(possible_corrections, key=lambda w: self.spell.word_usage_frequency(word=w))

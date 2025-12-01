@@ -13,22 +13,21 @@ class LetterOrder:
         self.spell = SpellChecker(language=language)
         self.punct_table = str.maketrans("", "", string.punctuation)
 
-    def has_order_error(self, sentence: str) -> bool:
+    def get_error(self, sentence: str):
         """
-        Returns True if any unknown word in the sentence contains a letter order error
-        (two consecutive letters swapped). Ignores punctuation. Returns False immediately
-        if all words are known.
+        Returns a tuple (has_error, error_type).
+        True and "LORD" if a letter-order error is found, otherwise False, None.
         """
         words = re.findall(r"\b\w+\b", sentence.lower())
         unknown_words = [w for w in words if w not in self.spell]
 
         if not unknown_words:
-            return False
+            return False, None
 
         for w in unknown_words:
-            if self._is_order_error(w):
-                return True
-        return False
+            if self.is_error(w):
+                return True, "LORD"
+        return False, None
 
     def correct(self, sentence: str) -> str:
         """
@@ -50,7 +49,7 @@ class LetterOrder:
 
     # ---------- internal helper methods ----------
 
-    def _is_order_error(self, word: str) -> bool:
+    def is_error(self, word: str) -> bool:
         """
         Returns True if the word can be corrected by swapping any two consecutive letters.
         """

@@ -8,9 +8,9 @@ def main():
         sentences = [line.strip() for line in f if line.strip()]
 
     for s in sentences:
-        has_error = lm.has_missing_letter_error(s)
+        has_error, error_type = lm.get_error(s)
         print(f"Sentence: {s}")
-        print(f"Has missing-letter error? {has_error}")
+        print(f"Has missing-letter error? {has_error}, Error type: {error_type}")
 
         if has_error:
             corrected = lm.correct(s)
