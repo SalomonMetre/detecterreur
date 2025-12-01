@@ -3,26 +3,15 @@ import string
 from spellchecker import SpellChecker
 
 class LetterOrder:
-    def __init__(self, language="fr"):
-        """
-        Initialize the LetterOrder detector.
+    error_name = "LORD"
 
-        Args:
-            language (str): Language code for SpellChecker.
-        """
+    def __init__(self, language="fr"):
         self.spell = SpellChecker(language=language)
         self.punct_table = str.maketrans("", "", string.punctuation)
 
     def get_error(self, sentence: str):
-        """
-        Returns a tuple (has_error, error_type).
-        True and "LORD" if a letter-order error is found, otherwise False, None.
-        """
         words = re.findall(r"\b\w+\b", sentence.lower())
         unknown_words = [w for w in words if w not in self.spell]
-
-        if not unknown_words:
-            return False, None
 
         for w in unknown_words:
             if self.is_error(w):
@@ -30,10 +19,6 @@ class LetterOrder:
         return False, None
 
     def correct(self, sentence: str) -> str:
-        """
-        Corrects letter order errors for unknown words only,
-        preserving original punctuation and casing.
-        """
         tokens = re.findall(r"[\w']+|[^\s\w]", sentence)
         corrected_tokens = []
 
@@ -50,22 +35,15 @@ class LetterOrder:
     # ---------- internal helper methods ----------
 
     def is_error(self, word: str) -> bool:
-        """
-        Returns True if the word can be corrected by swapping any two consecutive letters.
-        """
-        for candidate in self.spell.candidates(word):
+        for candidate in self._safe_candidates(word):
             if self._can_be_obtained_by_swapping(word, candidate):
                 return True
         return False
 
     def _fix_word(self, word: str) -> str:
-        """
-        Corrects a single word with consecutive-letter order error,
-        picking the candidate with the highest usage frequency.
-        """
         stripped = word.translate(self.punct_table).lower()
         possible_corrections = [
-            c for c in self.spell.candidates(stripped)
+            c for c in self._safe_candidates(stripped)
             if self._can_be_obtained_by_swapping(stripped, c)
         ]
 
@@ -75,9 +53,6 @@ class LetterOrder:
         return word
 
     def _can_be_obtained_by_swapping(self, word: str, candidate: str) -> bool:
-        """
-        Returns True if candidate can be obtained by swapping any two consecutive letters in word.
-        """
         if len(word) != len(candidate):
             return False
 
@@ -87,3 +62,13 @@ class LetterOrder:
             if "".join(swapped) == candidate:
                 return True
         return False
+
+    def _safe_candidates(self, word: str):
+        """
+        Wrapper around SpellChecker.candidates that returns an empty set
+        if SpellChecker returns None.
+        """
+        cands = self.spell.candidates(word)
+        if cands is None:
+            return set()
+        return cands

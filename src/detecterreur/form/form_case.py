@@ -9,6 +9,7 @@ class FormCase:
 
     Error code: FMAJ
     """
+    error_name = "FMAJ"
 
     def __init__(self):
         # regex to find words following sentence boundaries (start or after ., !, ?)

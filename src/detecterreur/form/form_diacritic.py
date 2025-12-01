@@ -2,6 +2,9 @@ import string
 from spellchecker import SpellChecker
 
 class FormDiacritic:
+
+    error_name = "FDIA"
+
     # Mapping from unaccented to possible accented vowels
     ACCENTED_VOWELS = {
         "a": {"à", "â", "ä"},
@@ -82,7 +85,12 @@ class FormDiacritic:
         in `word` with accented vowels.
         """
         candidates = set()
-        for cand in self.spell.candidates(word):
+        
+        raw_candidates = self.spell.candidates(word)
+        if not raw_candidates:
+            return candidates  # empty set instead of None
+
+        for cand in raw_candidates:
             if len(cand) != len(word):
                 continue
 

@@ -1,0 +1,246 @@
+[
+    {
+        "text": "FLE Learner -- Sinophone 1rst production: Je suis pour à partir étudier à l’étranger, qui nous permet de nous améliorer à la fois sur la structure cognitive et sur la capacité personnelle.",
+        "errors": {
+            "SINS": 1,
+            "SMIS": 1,
+            "GCON": 1
+        },
+        "line": 1
+    },
+    {
+        "text": "D’une part, on se met dans un nouvel environnement où il n’y a pas personne connue.",
+        "errors": {
+            "SMIS": 1
+        },
+        "line": 7
+    },
+    {
+        "text": "Ce que l’on doit apprendre est de nous adapter à la nouvelle vie plus vite que possible et de bien nous occuper les () affaires personnelles.",
+        "errors": {
+            "SMIS": 1,
+            "GACC": 1
+        },
+        "line": 8
+    },
+    {
+        "text": "D’autre part, c’est une opportunité de rencontre différentes personnes et différentes connaissances qui nous permettent d’élargir le domaine cognitif.",
+        "errors": {
+            "LMIS": 1
+        },
+        "line": 10
+    },
+    {
+        "text": "Il est possible que la structure d’enseignement est totalement différente de ce que l’on a déjà eu et les moyens d’apprentissage sont beaucoup plus variantes de ce que l’on a perçu.",
+        "errors": {},
+        "line": 11
+    },
+    {
+        "text": "Tous ces modifications nous donnent chances de nous perfectionner. 2nd production: Aujourd’hui il y a de plus en plus des étudiants partent partent à l’étranger pour continuer leurs études.",
+        "errors": {
+            "GACC": 1,
+            "SMIS": 1,
+            "GEUF": 1,
+            "SRED": 1
+        },
+        "line": 13
+    },
+    {
+        "text": "Sur cela, différentes personnes ont des différentes opinions.",
+        "errors": {},
+        "line": 20
+    },
+    {
+        "text": "Personnellement, je suis pour ce comportement c’est la raison pour laquelle je suis en France maintenant.",
+        "errors": {},
+        "line": 20
+    },
+    {
+        "text": "Il est évident, pour les étudiants de langues (), qu’il et une méthode efficace et importante d’étudier à l’étranger.",
+        "errors": {
+            "SMIS": 2,
+            "GACC": 1,
+            "GCONJ": 1
+        },
+        "line": 22
+    },
+    {
+        "text": "Cette expérience leur met dans la situation remplie par la circonstance de cette langue.",
+        "errors": {},
+        "line": 23
+    },
+    {
+        "text": "Par exemple, si j’apprends le français toujours en Chine, je ne peut presque jamais de parler comme un natif car il y a peu de chance de toucher le vrai méthode que les français parlent.",
+        "errors": {
+            "GCONJ": 1,
+            "SMIS": 1,
+            "GACC": 2
+        },
+        "line": 24
+    },
+    {
+        "text": "Pourtant, si je l’apprend en France, je peux parler avec les natifs et apprendre comme ils parlent.",
+        "errors": {},
+        "line": 25
+    },
+    {
+        "text": "En outre, étudier à l’étranger nous permet de être plus proche avec la culture locale.",
+        "errors": {
+            "GEUF": 1
+        },
+        "line": 27
+    },
+    {
+        "text": "Dans notre pays natal, on peut juste connaître la culture et la vie française par la télévision et des nouvelles, mais en France, on peut faire l’expérience des événements en France.",
+        "errors": {},
+        "line": 27
+    },
+    {
+        "text": "Je prends les manifestations e les grèves comme exemples, en Chine, je ne les vois que sur Internet ou sur les journaux, mais en France, je les vois dans ma vie en réel et cela me donne des sentiment plus forts.",
+        "errors": {
+            "LMIS": 1,
+            "FMAJ": 1,
+            "GACC": 1
+        },
+        "line": 29
+    },
+    {
+        "text": "Pour conclure, puisque étudier à l’étranger me donne plus de chance () d’étudier la langue française et de connaitre la culture mieux, je suis heureuse d’étudier ici. 3rd Production: Avec la mondialisation, il y a de plus en plus d’élèves qui font le choix d’étudier à l’étranger.",
+        "errors": {
+            "GACC": 1
+        },
+        "line": 32
+    },
+    {
+        "text": "On a la diversité entre deux opinions sur ce sujet.",
+        "errors": {},
+        "line": 38
+    },
+    {
+        "text": "Certes, les élèves qui choisissent étudier à l’étranger vont faire face aux défis d’étude dans un nouveaux environnement et d’adaptation aux circonstances nouvelles.",
+        "errors": {
+            "SMIS": 1,
+            "GEUF": 1
+        },
+        "line": 39
+    },
+    {
+        "text": "Ils ont la possibilité d’avoir des problèmes psychologiques au () physiques parce qu’ils ne peuvent pas s’adapter.",
+        "errors": {
+            "GACC": 1
+        },
+        "line": 41
+    },
+    {
+        "text": "Cependant, à mon avis, l’étude à l’étranger est favorable à poursuivre les () études.",
+        "errors": {
+            "GACC": 1
+        },
+        "line": 42
+    },
+    {
+        "text": "Premièrement, les élèves peuvent étudier les connaissances plus avancées dans les régions les plus développées de la discipline.",
+        "errors": {},
+        "line": 44
+    },
+    {
+        "text": "Deuxièmement, ils peuvent expérimenter différents concepts et méthodes pédagogiques.",
+        "errors": {},
+        "line": 45
+    },
+    {
+        "text": "Cela les aide à développer différentes façons de penser.",
+        "errors": {},
+        "line": 46
+    },
+    {
+        "text": "Troisièmement, les différents environnements culturels et sociaux peuvent enrichir les expériences personnelles dans les pays étrangers.",
+        "errors": {},
+        "line": 46
+    },
+    {
+        "text": "Donc, je crois qu’il est plus avantageux d’étudier à l’étranger pour les élèves. 4th Production: Ces dernières années, grâce au développement de la mondialisation, de plus en plus des étudiants choisissent d’aller à l’étranger pour faire leurs études.",
+        "errors": {
+            "GEUF": 1
+        },
+        "line": 48
+    },
+    {
+        "text": "Cela apporte beaucoup d’avantages mais en même temps, il apparait quelques problèmes qui va influencer la décision d’étudier à l’étranger, par exemple, la problème de finance et de sécurité.",
+        "errors": {
+            "PUNC": 1,
+            "GACC": 1
+        },
+        "line": 54
+    },
+    {
+        "text": "Personnellement, je suis pour aux étudiant d’étudier à l’étranger.",
+        "errors": {
+            "SMIS": 2
+        },
+        "line": 56
+    },
+    {
+        "text": "Pour faire des études à l’étranger, il faut apprendre une nouvelle langue qui signifie qu’on peut savoir des cultures des autres pays.",
+        "errors": {},
+        "line": 58
+    },
+    {
+        "text": "Je pense que c’est plutôt intéressant.",
+        "errors": {},
+        "line": 59
+    },
+    {
+        "text": "Je prends des exemples des étudiants chinois.",
+        "errors": {},
+        "line": 59
+    },
+    {
+        "text": "Quand ils apprends une langue nouvelle comme l’anglais et français, ils peuvent aussi acquérir des connaissances de culture occidentale qui est vraiment différente que () la civilisation chinoise.",
+        "errors": {
+            "GCON": 1,
+            "SMIS": 1,
+            "GACC": 1
+        },
+        "line": 60
+    },
+    {
+        "text": "C’est pendant cette période qu’ils peut ouvrir la horizon.",
+        "errors": {
+            "GCON": 1,
+            "GEUF": 1
+        },
+        "line": 62
+    },
+    {
+        "text": "Ensuite, quand les étudiants arrivent à l’étranger sans l’accompagnement de leur parents, ils doivent devenir plus indépendants.",
+        "errors": {
+            "GACC": 1
+        },
+        "line": 63
+    },
+    {
+        "text": "Ils doivent cuisiner, faire le ménage par soi-mêmes.",
+        "errors": {},
+        "line": 64
+    },
+    {
+        "text": "Pour s’intégrer aux étudiants natales , il faut plus courageux .",
+        "errors": {
+            "LINS": 1,
+            "SMIS": 1,
+            "GACC": 1
+        },
+        "line": 64
+    },
+    {
+        "text": "C’est après avoir conquérir ces problème <LMIS, GACC> qu’on va grandir.",
+        "errors": {},
+        "line": 65
+    },
+    {
+        "text": "Malgré des problèmes financière ou sécuritaires, à mon avis, partir étudier à l’étranger a plus davantages <FDIA, FAGL> que désavantage, c’est plutôt une bonne idée d’acquérir des connaissances différents et d’avoir une expérience excellente.",
+        "errors": {},
+        "line": 66
+    }
+]

@@ -12,6 +12,7 @@ class FormAgglutination:
     Uses:
       - pyspellchecker for fast dictionary lookups and frequency data
     """
+    error_name = "FAGL"
 
     def __init__(self, language: str = "fr", distance: int = 1):
         self.spell = SpellChecker(language=language, distance=distance)

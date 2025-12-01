@@ -6,6 +6,7 @@ class GrammarAgreement:
     Detects French grammatical agreement errors using pygrammalecte.
     Error code: GACC
     """
+    error_name = "GACC"
 
     AGREEMENT_TYPES = {"conj", "gn", "ppas", "tu", "inte"}
 

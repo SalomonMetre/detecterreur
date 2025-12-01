@@ -3,6 +3,9 @@ import string
 from spellchecker import SpellChecker
 
 class LetterInsertion:
+    
+    error_name = "LINS"
+
     def __init__(self, language="fr", distance=1):
         """
         Detects insertion-type spelling errors (extra unnecessary letters).
