@@ -69,14 +69,15 @@ class FormDiacritic:
 
     def _fix_word(self, word: str) -> str:
         """
-        Corrects a single word using form-diacritic substitutions.
+        Correct a single word using diacritical substitutions.
         """
         stripped = word.translate(self.punct_table).lower()
         possible = self._possible_corrections(stripped)
 
         if possible:
             best = max(possible, key=lambda w: self.spell.word_usage_frequency(word=w))
-            return word.replace(stripped, best)
+            return best
+
         return word
 
     def _possible_corrections(self, word: str):
