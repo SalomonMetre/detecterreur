@@ -46,14 +46,6 @@ This tool can be integrated into language learning platforms, educational apps, 
 pip install git+https://github.com/SalomonMetre/detecterreur
 ```
 
-Or for development / editable install:
-
-```bash
-pip install -e .
-```
-
----
-
 ## Quickstart
 
 ```python
