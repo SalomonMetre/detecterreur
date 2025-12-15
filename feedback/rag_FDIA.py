@@ -1,20 +1,27 @@
 import pandas as pd
 import numpy as np
+import os
 from sklearn.metrics.pairwise import cosine_similarity
-from detecterreur.forme.form_diacritic import FormDiacritic
+from detecterreur.form.form_diacritic import FormDiacritic
 from transformers import AutoModelForCausalLM, AutoTokenizer
-from detecterreur.forme.form_diacritic import FormDiacritic
+
+def find_changed_word(original, corrected):
+    """A simple diff logic to find the first changed word."""
+    orig_words = original.split()
+    corr_words = corrected.split()
+    if len(orig_words) != len(corr_words):
+        # Basic fallback if sentence structures are very different
+        for word in orig_words:
+            if word not in corr_words:
+                return word
+        return None
+
+    for o, c in zip(orig_words, corr_words):
+        if o != c:
+            return o
+    return None
 
 # --- 1. CONFIGURATION AND DATA (Replace with your actual data source) ---
-
-# Mock CSV content based on your Colab output structure
-MOCK_RULES_CSV_CONTENT = """rules,
-FORME FDIA les rectifications de l'orthographe de 1990 préconisent la suppression de l'accent circonflexe sur le u et le i. Exemples : la chaine – la voute – paraitre – il parait,
-FORME FDIA les mots en -ère et -ès prennent un accent grave : Une ère, un ers (légume lentille),
-FORME FDIA on ne met jamais d’accent grave sur les voyelles « e » précédant un « x ». Exemples : un accent circonflexe, le sexe.,
-FORME FDIA On utilise un accent aigu lorsque la voyelle « e » est la première lettre du mot Exemples : étable, élection, étendre…,\n
-# ... (rest of the rules)
-"""
 
 def setup_data_and_model():
     """Initializes detector, loads mock rules data, and sets up the LLM components."""
@@ -22,20 +29,25 @@ def setup_data_and_model():
     # 1. Error Detection (Simulated for one sentence)
     dia = FormDiacritic()
     sentence = "Je suis francais"
+    # Simulate getting the full correction from an advanced DetectErreur version
+    corrected_sentence = "Je suis français"
+    incorrect_word = find_changed_word(sentence, corrected_sentence)
     
     # get_error returns (has_error: bool, error_name: str)
     has_error, error_name = dia.get_error(sentence)
     
     if not has_error:
         print("No error detected. Exiting RAG process.")
-        return None, None, None, None
+        return None, None, None, None, None, None, None, None
 
     print(f"✅ Detected Error: {error_name} in sentence: '{sentence}'")
 
-    # 2. Vector Store Setup (MOCK: Loading rules to DataFrame)
-    # In a real system, you would load this from your vector database index
-    # Simulating pandas read_csv from string, assuming 'rules,' is the column name
-    rules_df = pd.read_csv('rules.csv', sep=",")
+    # 2. Vector Store Setup (Loading rules to DataFrame)
+    # Load from CSV and ensure column name is 'rules'
+    # Use absolute path relative to script location
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    rules_df = pd.read_csv(os.path.join(script_dir, 'rules', 'rules_test2.csv'))
+    rules_df.rename(columns={'rules,': 'rules'}, inplace=True)
 
     # Load embedding model (must be the same one used for embedding the rules initially)
     # Using a French-specific Sentence-Transformer model
@@ -44,23 +56,23 @@ def setup_data_and_model():
         embedding_model = SentenceTransformer('dangvantuan/sentence-camembert-base')
     except ImportError:
         print("Error: sentence-transformers is not installed. Please run: pip install sentence-transformers")
-        return None, None, None, None
+        return None, None, None, None, None, None, None, None
 
-    rules_df['embeddings'] = rules_df['rules,'].apply(lambda x: embedding_model.encode(x))
+    rules_df['embeddings'] = rules_df['rules'].apply(lambda x: embedding_model.encode(x))
 
     # 3. LLM Setup
-    model_name = "Qwen/Qwen2.5-1.5B"
+    model_name = "Qwen/Qwen2.5-1.5B-Instruct"
     try:
         tokenizer = AutoTokenizer.from_pretrained(model_name)
         model = AutoModelForCausalLM.from_pretrained(model_name)
     except Exception as e:
         print(f"Error loading Qwen model/tokenizer: {e}")
-        return None, None, None, None
+        return None, None, None, None, None, None, None, None
     
     # Set model to evaluation mode
     model.eval()
     
-    return sentence, error_name, rules_df, model, tokenizer, embedding_model
+    return sentence, corrected_sentence, incorrect_word, error_name, rules_df, model, tokenizer, embedding_model
 
 # --- 2. RAG RETRIEVAL LOGIC ---
 
@@ -71,45 +83,51 @@ def retrieve_context(df, prompt_text, embedding_model, top_k=5):
     prompt_embedding = embedding_model.encode(prompt_text)
     
     # 2. Calculate Similarity (Dot product = Unnormalized Cosine Similarity for normalized vectors)
-    # Calculate dot product using NumPy or custom function
-    # Note: df['embeddings'] elements are numpy arrays, this operation is efficient
     df['distance'] = df['embeddings'].apply(lambda x: np.dot(x, prompt_embedding))
 
     # 3. Retrieve Top K results
     top_k_results = df.sort_values('distance', ascending=False).head(top_k)
     
     # 4. Format context for the LLM
-    context = "\n".join(top_k_results['rules,'].tolist())
+    context = "\n".join(top_k_results['rules'].tolist())
     
     print(f"🔍 Retrieved {top_k} relevant rules (top distance: {top_k_results['distance'].iloc[0]:.4f}).")
     return context
 
 # --- 3. GENERATION AND MAIN EXECUTION ---
 
-def generate_feedback(sentence, error_name, context, model, tokenizer):
+def generate_feedback(sentence, corrected_sentence, error_name, context, model, tokenizer):
     """Creates the final RAG prompt and generates the model's response."""
     
-    # RAG PROMPT (The highly refined instruction template from your Colab)
-    rag_prompt = f"""En tant que tuteur de FLE (Français Langue Étrangère), votre rôle est de fournir un retour pédagogique clair, encourageant et utile à un.e étudiant.e qui vient de faire une erreur. L'erreur spécifique est la suivante : {error_name}, détectée dans la phrase : '{sentence}'.
+    # System prompt for the persona
+    system_prompt = "Tu es un tuteur de français (FLE) qui explique une erreur de manière simple, pédagogique et encourageante."
 
-Votre réponse doit impérativement :
-- Reformuler les informations du 'Contexte' ci-dessous dans vos propres mots, en évitant toute copie directe.
-- Expliquer la règle de manière simple et accessible.
-- Donner des conseils pratiques pour éviter cette erreur à l'avenir.
-- Inclure un ou deux exemples clairs, si pertinent, pour illustrer la correction.
-- Maintenir un ton encourageant et constructif.
-- Proposer une correction directe pour la phrase originale.
+    # User prompt with the specific task
+    user_content = f"""### Tâche
+Corrige l'erreur de type '{error_name}' dans la phrase de l'élève.
 
-Le tout doit être concis et ne pas dépasser 200 mots.
+### Phrase de l'élève
+Phrase de l'élève : "{sentence}"
 
-Contexte :
+### Phrase corrigée
+"{corrected_sentence}"
+
+### Contexte de la règle
 {context}
 
-Correction et explication :
-"""
+### Consignes
+1.  **Explique l'erreur** en te basant **uniquement** sur le "Contexte de la règle" fourni. Ne mentionne aucune autre règle.
+2.  Sois bref, clair et encourageant.
+3.  Termine ta réponse par une phrase complète.
+4.  **Ne dépasse pas 200 mots.**
+
+### Feedback pour l'élève :"""
     
     # Use the model's chat template to format the prompt correctly
-    messages = [{"role": "user", "content": rag_prompt}]
+    messages = [
+        {"role": "system", "content": system_prompt},
+        {"role": "user", "content": user_content}
+    ]
     inputs = tokenizer.apply_chat_template(
         messages,
         add_generation_prompt=True,
@@ -119,7 +137,7 @@ Correction et explication :
     ).to(model.device)
 
     # Generate the output
-    outputs = model.generate(**inputs, max_new_tokens=200, do_sample=True, temperature=0.7)
+    outputs = model.generate(**inputs, max_new_tokens=180, do_sample=True, temperature=0.4, top_p=0.9, repetition_penalty=1.15, eos_token_id=tokenizer.eos_token_id, pad_token_id=tokenizer.eos_token_id)
     
     # Decode the *newly generated* tokens only
     generated_text = tokenizer.decode(outputs[0][inputs["input_ids"].shape[-1]:], skip_special_tokens=True)
@@ -131,21 +149,20 @@ Correction et explication :
 if __name__ == "__main__":
     
     # Load all components
-    sentence, error_name, rules_df, model, tokenizer, embedding_model = setup_data_and_model()
+    sentence, corrected_sentence, incorrect_word, error_name, rules_df, model, tokenizer, embedding_model = setup_data_and_model()
 
     if rules_df is not None:
         # 1. Create the Query Text (incorporates error type and original sentence)
-        query_text = f"Explication de l'erreur FDIA (diacritique) dans la phrase '{sentence}'."
+        query_text = f"Règle de la cédille 'ç' pour corriger le mot '{incorrect_word}'"
         
         # 2. Retrieve Context
-        retrieved_context = retrieve_context(rules_df, query_text, embedding_model, top_k=5)
+        retrieved_context = retrieve_context(rules_df, query_text, embedding_model, top_k=2)
         
         # 3. Generate Final Feedback
-        final_feedback = generate_feedback(sentence, error_name, retrieved_context, model, tokenizer)
+        final_feedback = generate_feedback(sentence, corrected_sentence, error_name, retrieved_context, model, tokenizer)
         
         print("\n" + "="*60)
         print("🇫🇷 FINAL GENERATED FEEDBACK FOR FRENCH STUDENT 🇫🇷")
         print("="*60)
         print(final_feedback)
         print("="*60 + "\n")
-
