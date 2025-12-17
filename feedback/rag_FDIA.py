@@ -4,7 +4,7 @@ import os
 import torch
 from sklearn.metrics.pairwise import cosine_similarity
 from detecterreur.form.form_diacritic import FormDiacritic
-from transformers import AutoModelForCausalLM, AutoTokenizer
+import ollama
 from codecarbon import EmissionsTracker
 
 def find_changed_word(original, corrected):
@@ -53,22 +53,11 @@ def load_resources():
 
     rules_df['embeddings'] = rules_df['rules'].apply(lambda x: embedding_model.encode(x))
 
-    # 3. LLM Setup
-    # Note: For the 7B model, ensure your server has at least 16GB RAM/VRAM.
-    model_name = "Qwen/Qwen2.5-3B-Instruct"
-    try:
-        tokenizer = AutoTokenizer.from_pretrained(model_name)
-        # Load in float16 to reduce RAM usage (from ~12GB to ~6GB) preventing swapping
-        model = AutoModelForCausalLM.from_pretrained(model_name, torch_dtype=torch.float16)
-    except Exception as e:
-        print(f"Error loading Qwen model/tokenizer: {e}")
-        return None
-    
-    # Set model to evaluation mode
-    model.eval()
+    # With Ollama, the model is served by a separate application,
+    # so we don't need to load it in the script.
     
     print("✅ All resources loaded successfully.")
-    return dia, rules_df, embedding_model, model, tokenizer
+    return dia, rules_df, embedding_model
 
 # --- 2. RAG RETRIEVAL LOGIC ---
 
@@ -92,7 +81,7 @@ def retrieve_context(df, prompt_text, embedding_model, top_k=5):
 
 # --- 3. GENERATION AND MAIN EXECUTION ---
 
-def generate_feedback(sentence, corrected_sentence, incorrect_word, corrected_word, context, model, tokenizer):
+def generate_feedback_ollama(sentence, corrected_sentence, incorrect_word, corrected_word, context, model_name="ministral-3:3b"):
     """Creates the final RAG prompt and generates the model's response."""
     
     # System prompt for the persona
@@ -128,23 +117,19 @@ Expliquer une correction orthographique à un élève.
         {"role": "system", "content": system_prompt},
         {"role": "user", "content": user_content}
     ]
-    inputs = tokenizer.apply_chat_template(
-        messages,
-        add_generation_prompt=True,
-        tokenize=True,
-        return_dict=True,
-        return_tensors="pt",
-    ).to(model.device)
 
-    # Generate the output using greedy decoding to reduce hallucinations and improve factuality.
-    outputs = model.generate(**inputs, max_new_tokens=300, do_sample=False, eos_token_id=tokenizer.eos_token_id, pad_token_id=tokenizer.eos_token_id)
-    
-    # Decode the *newly generated* tokens only
-    generated_text = tokenizer.decode(outputs[0][inputs["input_ids"].shape[-1]:], skip_special_tokens=True)
+    try:
+        response = ollama.chat(
+            model=model_name,
+            messages=messages,
+        )
+        generated_text = response['message']['content']
+    except Exception as e:
+        raise RuntimeError(f"Failed to get response from Ollama: {e}")
     
     return generated_text
 
-def process_request(sentence, corrected_sentence, dia, rules_df, embedding_model, model, tokenizer):
+def process_request(sentence, corrected_sentence, dia, rules_df, embedding_model):
     """
     USER REQUEST: Processes a single input sentence.
     This is what runs every time a user clicks 'Check'.
@@ -166,7 +151,11 @@ def process_request(sentence, corrected_sentence, dia, rules_df, embedding_model
     retrieved_context = retrieve_context(rules_df, query_text, embedding_model, top_k=5)
     
     # 5. Generate Feedback
-    feedback = generate_feedback(sentence, corrected_sentence, incorrect_word, corrected_word_val, retrieved_context, model, tokenizer)
+    # The original model was `mistralai/Ministral-3B-Instruct-2410`.
+    # Ensure you have a corresponding model pulled in Ollama. We'll use `ministral-3:3b` as an example.
+    feedback = generate_feedback_ollama(
+        sentence, corrected_sentence, incorrect_word, corrected_word_val, retrieved_context, model_name="ministral-3:3b"
+    )
     return feedback
 
 # --- ENTRY POINT ---
