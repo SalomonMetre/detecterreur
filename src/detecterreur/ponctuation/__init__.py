@@ -1,1 +1,1 @@
-from .punctuation import Punctuation
+from .PONC import Punctuation

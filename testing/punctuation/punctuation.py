@@ -1,4 +1,4 @@
-from detecterreur.punctuation.punctuation import Punctuation
+from detecterreur.ponctuation.PONC import Punctuation
 
 def main():
     punc = Punctuation()

@@ -1,4 +1,4 @@
-from detecterreur.grammar.grammar_agreement import GrammarAgreement
+from detecterreur.grammaire.grammar_agreement import GrammarAgreement
 
 def main():
     ga = GrammarAgreement()

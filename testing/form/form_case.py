@@ -1,4 +1,4 @@
-from detecterreur.form.form_case import FormCase
+from detecterreur.forme.form_case import FormCase
 
 def main():
     fc = FormCase()

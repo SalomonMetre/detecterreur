@@ -1,4 +1,4 @@
-from detecterreur.grammar.grammar_conjugation import GrammarConjugation
+from detecterreur.grammaire.grammar_conjugation import GrammarConjugation
 
 def main():
     gc = GrammarConjugation()

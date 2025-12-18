@@ -5,16 +5,16 @@ from functools import partial
 from codecarbon import track_emissions
 
 # Import all detectors
-from detecterreur.form.form_case import FormCase
-from detecterreur.form.form_diacritic import FormDiacritic
-from detecterreur.letter.letter_insertion import LetterInsertion
-from detecterreur.letter.letter_missing import LetterMissing
-from detecterreur.letter.letter_substitution import LetterSubstitution
-from detecterreur.letter.letter_order import LetterOrder
-from detecterreur.punctuation.punctuation import Punctuation
-from detecterreur.grammar.grammar_conjugation import GrammarConjugation
-from detecterreur.grammar.grammar_euphonic import GrammarEuphonic
-from detecterreur.grammar.grammar_agreement import GrammarAgreement
+from detecterreur.forme.form_case import FormCase
+from detecterreur.forme.form_diacritic import FormDiacritic
+from detecterreur.ortographe.letter_insertion import LetterInsertion
+from detecterreur.ortographe.letter_missing import LetterMissing
+from detecterreur.ortographe.letter_substitution import LetterSubstitution
+from detecterreur.ortographe.letter_order import LetterOrder
+from detecterreur.ponctuation.PONC import Punctuation
+from detecterreur.grammaire.grammar_conjugation import GrammarConjugation
+from detecterreur.grammaire.grammar_euphonic import GrammarEuphonic
+from detecterreur.grammaire.grammar_agreement import GrammarAgreement
 
 
 # ------------- WORKER FUNCTION (RUNS IN PARALLEL) ---------------- #

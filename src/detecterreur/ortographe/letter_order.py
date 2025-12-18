@@ -3,7 +3,7 @@ import string
 from spellchecker import SpellChecker
 
 class LetterOrder:
-    error_name = "LORD"
+    error_name = "OORD"
 
     def __init__(self, language="fr"):
         self.spell = SpellChecker(language=language)

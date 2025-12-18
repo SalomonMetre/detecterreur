@@ -1,4 +1,4 @@
-from detecterreur.letter.letter_substitution import LetterSubstitution
+from detecterreur.ortographe.letter_substitution import LetterSubstitution
 
 def main():
     ls = LetterSubstitution(distance=2)

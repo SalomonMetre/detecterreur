@@ -3,7 +3,7 @@ import string
 from spellchecker import SpellChecker
 
 class LetterMissing:
-    error_name = "LMIS"
+    error_name = "OMIS"
 
     def __init__(self, language="fr", distance=1):
         self.spell = SpellChecker(language=language, distance=distance)

@@ -4,7 +4,7 @@ from spellchecker import SpellChecker
 
 class LetterInsertion:
     
-    error_name = "LINS"
+    error_name = "OINS"
 
     def __init__(self, language="fr", distance=1):
         """

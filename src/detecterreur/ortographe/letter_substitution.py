@@ -3,7 +3,7 @@ from spellchecker import SpellChecker
 import re
 
 class LetterSubstitution:
-    error_name = "LSUB"
+    error_name = "OSUB"
 
     def __init__(self, language="fr", distance=1):
         self.spell = SpellChecker(language=language, distance=distance)

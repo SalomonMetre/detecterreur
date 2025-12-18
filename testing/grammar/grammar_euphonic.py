@@ -1,4 +1,4 @@
-from detecterreur.grammar.grammar_euphonic import GrammarEuphonic
+from detecterreur.grammaire.grammar_euphonic import GrammarEuphonic
 
 def main():
     geuf = GrammarEuphonic()

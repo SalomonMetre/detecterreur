@@ -1,4 +1,4 @@
-from detecterreur.letter.letter_insertion import LetterInsertion
+from detecterreur.ortographe.letter_insertion import LetterInsertion
 
 def main():
     li = LetterInsertion(distance=2)

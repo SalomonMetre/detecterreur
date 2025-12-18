@@ -1,4 +1,4 @@
-from detecterreur.letter.letter_missing import LetterMissing
+from detecterreur.ortographe.letter_missing import LetterMissing
 
 def main():
     lm = LetterMissing(distance=2)

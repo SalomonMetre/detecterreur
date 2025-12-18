@@ -1,4 +1,4 @@
-from detecterreur.letter.letter_order import LetterOrder
+from detecterreur.ortographe.letter_order import LetterOrder
 
 def main():
     lo = LetterOrder()

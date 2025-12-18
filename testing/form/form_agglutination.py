@@ -1,4 +1,4 @@
-from detecterreur.form.form_agglutination import FormAgglutination
+from detecterreur.forme.form_agglutination import FormAgglutination
 
 def main():
     fa = FormAgglutination(distance=2)

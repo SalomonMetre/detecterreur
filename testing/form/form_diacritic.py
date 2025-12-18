@@ -1,4 +1,4 @@
-from detecterreur.form.form_diacritic import FormDiacritic
+from detecterreur.forme.form_diacritic import FormDiacritic
 
 def main():
     fd = FormDiacritic(distance=2)

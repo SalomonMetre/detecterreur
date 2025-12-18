@@ -12,7 +12,7 @@ class Punctuation:
     """
 
     def __init__(self):
-        self.error_name = "PUNC"
+        self.error_name = "PONC"
 
     # -----------------------------------------------------
     # Public API
