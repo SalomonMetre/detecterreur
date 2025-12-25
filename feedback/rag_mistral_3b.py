@@ -20,8 +20,6 @@ def load_error():
 
     return sentence, error_name, correction
 
-
-
 def find_changed_word(original, corrected):
     """ Finds the first changed word pair (incorrect, correct)."""
     orig_words = original.split()

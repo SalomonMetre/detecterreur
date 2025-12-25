@@ -97,25 +97,25 @@ def generate_feedback(sentence, corrected_sentence, incorrect_word, corrected_wo
 
     # User prompt with the specific task
     user_content = f"""### Tâche
-Expliquer une correction orthographique à un élève.
+    Expliquer une correction orthographique à un élève.
 
-### Correction à analyser
-- Mot incorrect : "{incorrect_word}"
-- Mot corrigé : "{corrected_word}"
-- Phrase complète : "{corrected_sentence}"
+    ### Correction à analyser
+    - Mot incorrect : "{incorrect_word}"
+    - Mot corrigé : "{corrected_word}"
+    - Phrase complète : "{corrected_sentence}"
 
-### Règles de grammaire disponibles (Contexte)
-{context}
+    ### Règles de grammaire disponibles (Contexte)
+    {context}
 
-### Instructions
-1. **Filtrage** : Ignore les règles du contexte qui ne concernent pas la modification spécifique de "{incorrect_word}" en "{corrected_word}".
-2. **Explication** : Utilise la règle pertinente pour expliquer l'erreur. Si aucune règle ne correspond exactement, décris simplement la correction de manière factuelle.
-3. **Format** :
-- Réponse courte (2 à 3 phrases).
-- Ton neutre.
-- Ne mentionne JAMAIS les codes d'erreur (ex: FDIA).
+    ### Instructions
+    1. **Filtrage** : Ignore les règles du contexte qui ne concernent pas la modification spécifique de "{incorrect_word}" en "{corrected_word}".
+    2. **Explication** : Utilise la règle pertinente pour expliquer l'erreur. Si aucune règle ne correspond exactement, décris simplement la correction de manière factuelle.
+    3. **Format** :
+    - Réponse courte (2 à 3 phrases).
+    - Ton neutre.
+    - Ne mentionne JAMAIS les codes d'erreur (ex: FDIA).
 
-### Réponse :"""
+    ### Réponse :"""
     
     # Use the model's chat template to format the prompt correctly
     messages = [
