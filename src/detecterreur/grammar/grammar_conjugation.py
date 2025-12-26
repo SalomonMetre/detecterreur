@@ -1,50 +1,55 @@
 from pygrammalecte import grammalecte_text, GrammalecteGrammarMessage
-from typing import Optional, Tuple
+from typing import Tuple
 
 class GrammarConjugation:
     """
     Detects French conjugation errors using pygrammalecte.
-    Error code: GCONJ
+    Category: GRAMMAIRE
+    Error: GCON
     """
+    error_name = "GCON"
+    error_category = "GRAMMAIRE"
 
     def __init__(self):
-        self.error_name = "GCONJ"
+        pass
 
     # -----------------------------------------------------
     # Public API
     # -----------------------------------------------------
-    def get_error(self, sentence: str) -> Tuple[bool, Optional[str]]:
+    def get_error(self, sentence: str) -> Tuple[str, str, bool]:
         """
-        Returns (True, error_code) if a conjugation error is detected,
-        otherwise (False, None).
+        Returns (error_category, error_name, True/False)
         """
+        # Grammalecte returns a generator/list of messages
         for message in grammalecte_text(sentence):
-            if isinstance(message, GrammalecteGrammarMessage) and message.type == "conj":
-                return True, self.error_name
-        return False, None
+            if isinstance(message, GrammalecteGrammarMessage):
+                # Check specifically for conjugation errors
+                if message.type == "conj":
+                    return self.error_category, self.error_name, True
+                    
+        return self.error_category, self.error_name, False
 
     def correct(self, sentence: str) -> str:
         """
         Corrects conjugation errors using pygrammalecte suggestions.
-        Applies suggestions exactly at the indicated start/end positions.
+        We apply corrections from Right-to-Left to avoid index shifting issues.
         """
         corrected = sentence
-        offset = 0  # Track offset because replacements can change string length
-
+        
+        # Collect all conjugation errors
+        corrections = []
         for message in grammalecte_text(sentence):
             if isinstance(message, GrammalecteGrammarMessage) and message.type == "conj":
                 if message.suggestions:
-                    # Take the first suggestion
-                    sugg = message.suggestions[0]
+                    # Store (start, end, replacement)
+                    corrections.append((message.start, message.end, message.suggestions[0]))
 
-                    # Compute real positions accounting for previous replacements
-                    start = message.start + offset
-                    end = message.end + offset
+        # Sort by start index Descending (Right -> Left)
+        # This ensures that modifying the end of the string doesn't invalidate 
+        # the indices of errors at the beginning.
+        corrections.sort(key=lambda x: x[0], reverse=True)
 
-                    # Apply correction
-                    corrected = corrected[:start] + sugg + corrected[end:]
-
-                    # Update offset for next replacements
-                    offset += len(sugg) - (end - start)
+        for start, end, sugg in corrections:
+            corrected = corrected[:start] + sugg + corrected[end:]
 
         return corrected

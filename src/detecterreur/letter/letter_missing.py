@@ -3,68 +3,96 @@ import string
 from spellchecker import SpellChecker
 
 class LetterMissing:
-    error_name = "LMIS"
+    
+    error_name = "OMIS"
+    error_category = "ORTHOGRAPHE"
 
     def __init__(self, language="fr", distance=1):
+        """
+        Detects missing letter errors (omissions).
+        Example: "commne" -> "commune" (Missing 'u')
+        
+        Args:
+            distance (int): Max number of missing characters allowed.
+                            If distance=1, "aple" -> "apple" is valid.
+        """
         self.spell = SpellChecker(language=language, distance=distance)
         self.distance = distance
         self.punct_table = str.maketrans("", "", string.punctuation)
 
     def get_error(self, sentence: str):
+        """
+        Returns: (error_category, error_name, True/False)
+        """
         words = re.findall(r"\b\w+\b", sentence.lower())
-        unknown_words = [w for w in words if w not in self.spell]
+        
+        unknown = [w for w in words if w not in self.spell]
 
-        for w in unknown_words:
+        if not unknown:
+            return self.error_category, self.error_name, False
+
+        for w in unknown:
             if self.is_error(w):
-                return True, "LMIS"
-        return False, None
+                return self.error_category, self.error_name, True
+
+        return self.error_category, self.error_name, False
+
+    def is_error(self, word: str) -> bool:
+        best_candidate = self._get_missing_correction(word)
+        return best_candidate is not None
 
     def correct(self, sentence: str) -> str:
         tokens = re.findall(r"[\w']+|[^\s\w]", sentence)
-        corrected_words = []
+        corrected = []
 
-        for word in tokens:
-            stripped = word.translate(self.punct_table).lower()
+        for token in tokens:
+            stripped = token.translate(self.punct_table).lower()
+
             if stripped and stripped not in self.spell:
-                corrected_word = self._fix_word(word)
+                fix = self._get_missing_correction(stripped)
+                if fix:
+                    corrected.append(fix)
+                else:
+                    corrected.append(token)
             else:
-                corrected_word = word
-            corrected_words.append(corrected_word)
+                corrected.append(token)
 
-        return " ".join(corrected_words)
+        return " ".join(corrected)
 
-    # ---------- internal helpers ----------
+    # ---------------------------------------------------------
+    # Internal helpers
+    # ---------------------------------------------------------
+    def _get_missing_correction(self, word: str):
+        if not word: 
+            return None
 
-    def is_error(self, word: str) -> bool:
-        for candidate in self._safe_candidates(word):
-            if len(candidate) == len(word) + 1:
-                for i in range(len(candidate)):
-                    if candidate[:i] + candidate[i+1:] == word:
-                        return True
-        return False
+        candidates = self.spell.candidates(word)
+        if not candidates:
+            return None
 
-    def _fix_word(self, word: str) -> str:
-        stripped = word.translate(self.punct_table).lower()
-        if not stripped or stripped in self.spell:
-            return word
+        valid_corrections = []
+        for c in candidates:
+            # 1. Candidate must be LONGER (we are looking for missing letters in the original)
+            if len(c) > len(word):
+                # 2. The difference in length must be <= allowed distance
+                diff = len(c) - len(word)
+                if diff <= self.distance:
+                    # 3. The ORIGINAL word must be a subsequence of the CANDIDATE
+                    # (Meaning: if we delete letters from Candidate, we get Original)
+                    if self._is_subsequence(sub=word, main=c):
+                        valid_corrections.append(c)
 
-        possible_corrections = []
-        for candidate in self._safe_candidates(stripped):
-            if len(candidate) == len(stripped) + 1:
-                for i in range(len(candidate)):
-                    if candidate[:i] + candidate[i+1:] == stripped:
-                        possible_corrections.append(candidate)
-                        break
+        if not valid_corrections:
+            return None
 
-        if possible_corrections:
-            best = max(possible_corrections, key=lambda w: self.spell.word_usage_frequency(word=w))
-            return word.replace(stripped, best)
+        # Pick the most frequent valid correction
+        best_word = max(valid_corrections, key=lambda w: self.spell.word_frequency[w])
+        return best_word
 
-        return word
-
-    def _safe_candidates(self, word: str):
+    def _is_subsequence(self, sub: str, main: str) -> bool:
         """
-        Wraps SpellChecker.candidates to return empty set if None.
+        Returns True if 'sub' can be formed by deleting characters from 'main'.
         """
-        cands = self.spell.candidates(word)
-        return cands if cands is not None else set()
+        it = iter(main)
+        # Check if every char in 'sub' is found in 'main' in the correct order
+        return all(char in it for char in sub)

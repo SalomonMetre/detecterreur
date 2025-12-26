@@ -1,44 +1,83 @@
-from pygrammalecte import grammalecte_text, GrammalecteGrammarMessage
-from typing import Tuple, Optional
+import re
 
 class GrammarEuphonic:
     """
-    Detects euphonics errors in French (type 'tu' in pygrammalecte)
-    Reports error code: GEUF
+    Detects missing euphonic markers in French inversion questions using robust Regex.
+    
+    Catches collisions like:
+    1. "A il" or "A-il"       -> "A-t-il" (Vowel-Vowel collision)
+    2. "Vient il"             -> "Vient-il" (Missing hyphen)
+    
+    Category: GRAMMAIRE
+    Error: GEUF
     """
+    error_name = "GEUF"
+    error_category = "GRAMMAIRE"
 
     def __init__(self):
-        self.error_name = "GEUF"
-        self.pg_type = "tu"  # pygrammalecte error type
+        # Target pronouns for inversion
+        pronouns = r"(?:il|elle|on|ils|elles|iel)"
+        
+        # -------------------------------------------------------------------------
+        # Pattern 1: Vowel Collision (Needs -t-)
+        # -------------------------------------------------------------------------
+        # Detects: [Word ending in Vowel] + [Space or Hyphen] + [Pronoun starting with Vowel]
+        # Examples: "Parle elle", "Parle-elle", "Va on", "Va-on"
+        # Excludes: "Parle-t-elle" (already has -t-)
+        #
+        # Group 1: Verb (ending in vowel)
+        # Group 2: Separator (space, hyphen, or space-hyphen-space)
+        # Group 3: Pronoun
+        self.pattern_vowel_collision = re.compile(
+            r"\b([a-zA-Zà-ü]+[aeiouyàâéèêëîïôùûü])(\s*-\s*|\s+)(%s)\b" % pronouns,
+            re.IGNORECASE | re.UNICODE
+        )
+
+        # -------------------------------------------------------------------------
+        # Pattern 2: Missing Hyphen (Needs -)
+        # -------------------------------------------------------------------------
+        # Detects: [Word ending in T or D] + [Space] + [Pronoun]
+        # Examples: "Vient il", "Prend elle"
+        # Excludes: "Vient-il" (already has hyphen)
+        #
+        # Group 1: Verb (ending in t or d)
+        # Group 2: Pronoun
+        self.pattern_missing_hyphen = re.compile(
+            r"\b([a-zA-Zà-ü]+[td])\s+(%s)\b" % pronouns,
+            re.IGNORECASE | re.UNICODE
+        )
 
     # -----------------------------------------------------
     # Public API
     # -----------------------------------------------------
-    def get_error(self, sentence: str) -> Tuple[bool, Optional[str]]:
+    def get_error(self, sentence: str):
         """
-        Returns True and error code if a euphonics error is detected.
+        Returns: (error_category, error_name, True/False)
         """
-        for message in grammalecte_text(sentence):
-            if isinstance(message, GrammalecteGrammarMessage):
-                if message.type == self.pg_type:
-                    return True, self.error_name
-        return False, None
+        # Check Pattern 1 (Need -t-)
+        if self.pattern_vowel_collision.search(sentence):
+            return self.error_category, self.error_name, True
+
+        # Check Pattern 2 (Need -)
+        if self.pattern_missing_hyphen.search(sentence):
+            return self.error_category, self.error_name, True
+                    
+        return self.error_category, self.error_name, False
 
     def correct(self, sentence: str) -> str:
         """
-        Applies pygrammalecte suggestions to fix euphonics errors.
+        Applies regex substitution to insert -t- or - where needed.
         """
         corrected = sentence
-        offset = 0  # track shift in character positions after replacements
-
-        for message in grammalecte_text(sentence):
-            if isinstance(message, GrammalecteGrammarMessage) and message.type == self.pg_type:
-                if message.suggestions:
-                    start = message.start + offset
-                    end = message.end + offset
-                    # Apply first suggestion
-                    replacement = message.suggestions[0]
-                    corrected = corrected[:start] + replacement + corrected[end:]
-                    offset += len(replacement) - (end - start)
-
+        
+        # Fix 1: Insert -t- for vowel collisions
+        # "Parle elle" -> "Parle-t-elle"
+        # "Parle-elle" -> "Parle-t-elle"
+        # We replace the bad separator (Group 2) with "-t-"
+        corrected = self.pattern_vowel_collision.sub(r"\1-t-\3", corrected)
+        
+        # Fix 2: Insert - for missing hyphens
+        # "Vient il" -> "Vient-il"
+        corrected = self.pattern_missing_hyphen.sub(r"\1-\2", corrected)
+        
         return corrected
