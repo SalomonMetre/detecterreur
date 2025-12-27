@@ -250,3 +250,24 @@ class Orchestrator:
                 "corrected_sentence": corrected_cascaded,
             }
         }
+
+    def get_independent_trace(self, sentence: str) -> List[Tuple[str, str]]:
+        """
+        Exécute chaque détecteur de manière atomique sur la phrase originale.
+        Retourne une liste de paires (original, corrigé) uniquement pour les
+        couches qui ont détecté et corrigé une erreur.
+        
+        Les noms des couches ne sont pas inclus pour garantir l'anonymat.
+        """
+        independent_pairs = []
+        
+        # On utilise le moteur de suggestions indépendantes existant
+        suggestions = self.get_suggestions(sentence)
+
+        for _, _, has_err, suggested_text in suggestions:
+            # On ne garde que les couches qui ont trouvé une erreur
+            # et qui ont produit un texte différent de l'original
+            if has_err and suggested_text != sentence:
+                independent_pairs.append((sentence, suggested_text))
+                
+        return independent_pairs
