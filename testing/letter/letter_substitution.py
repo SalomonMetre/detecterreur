@@ -1,16 +1,21 @@
+from pathlib import Path
 from detecterreur.letter.letter_substitution import LetterSubstitution
 
 def main():
-    ls = LetterSubstitution(distance=2)
+    ls = LetterSubstitution(distance=1)
 
-    # Read sentences from the file
-    with open("testing/letter/letter_substitution.txt", "r", encoding="utf-8") as f:
+    # Path to testing/letter/letter_substitution.txt
+    current_dir = Path(__file__).parent
+    file_path = current_dir / "letter_substitution.txt"
+
+    with open(file_path, "r", encoding="utf-8") as f:
         sentences = [line.strip() for line in f if line.strip()]
 
     for s in sentences:
-        has_error, error_type = ls.get_error(s)
+        error_category, error_name, has_error = ls.get_error(s)
+        
         print(f"Sentence: {s}")
-        print(f"Has letter substitution error? {has_error}, Error type: {error_type}")
+        print(f"Has substitution error? {has_error} ({error_category}: {error_name})")
 
         if has_error:
             corrected = ls.correct(s)

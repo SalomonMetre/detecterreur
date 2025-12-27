@@ -1,15 +1,22 @@
+from pathlib import Path
 from detecterreur.grammar.grammar_agreement import GrammarAgreement
 
 def main():
     ga = GrammarAgreement()
 
-    with open("testing/grammar/grammar_agreement.txt", "r", encoding="utf-8") as f:
+    # Path to the CLEAN text file
+    current_dir = Path(__file__).parent
+    file_path = current_dir / "grammar_agreement.txt"
+
+    with open(file_path, "r", encoding="utf-8") as f:
         sentences = [line.strip() for line in f if line.strip()]
 
     for s in sentences:
-        has_error, error_code = ga.get_error(s)
+        # Unpack the triplet
+        category, error_code, has_error = ga.get_error(s)
+        
         print(f"Sentence: {s}")
-        print(f"Has agreement error? {has_error} | Code: {error_code}")
+        print(f"Has agreement error? {has_error} | Code: {error_code} ({category})")
 
         if has_error:
             corrected = ga.correct(s)

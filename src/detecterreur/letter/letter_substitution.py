@@ -1,90 +1,66 @@
 import re
-import string
+from typing import Tuple, Optional
 from spellchecker import SpellChecker
+from detecterreur.validator import Validator  # <--- IMPORT
 
 class LetterSubstitution:
-    
     error_name = "OSUB"
     error_category = "ORTHOGRAPHE"
 
-    def __init__(self, language="fr", distance=1):
-        """
-        Detects letter substitution errors (wrong letter used).
-        Example: "teléphone" -> "téléphone" (e -> é)
-                 "water" -> "later" (w -> l)
-        
-        Args:
-            distance (int): Max number of substituted characters allowed.
-        """
+    def __init__(self, language: str = "fr", distance: int = 1):
         self.spell = SpellChecker(language=language, distance=distance)
         self.distance = distance
-        self.punct_table = str.maketrans("", "", string.punctuation)
+        self.validator = Validator()  # <--- INSTANTIATE
 
-    def get_error(self, sentence: str):
-        """
-        Returns: (error_category, error_name, True/False)
-        """
-        words = re.findall(r"\b\w+\b", sentence.lower())
-        unknown = [w for w in words if w not in self.spell]
-
-        if not unknown:
-            return self.error_category, self.error_name, False
-
-        for w in unknown:
-            if self.is_error(w):
-                return self.error_category, self.error_name, True
-                
+    def get_error(self, sentence: str) -> Tuple[str, str, bool]:
+        words = re.findall(r"\b\w+\b", sentence)
+        for word in words:
+            # SAFETY: If spaCy knows "cuisine", SKIP IT.
+            if self.validator.is_valid(word):
+                continue
+            
+            if word.lower() not in self.spell:
+                if self._get_substitution_correction(word):
+                    return self.error_category, self.error_name, True
         return self.error_category, self.error_name, False
 
-    def is_error(self, word: str) -> bool:
-        best_candidate = self._get_substitution_correction(word)
-        return best_candidate is not None
-
     def correct(self, sentence: str) -> str:
-        tokens = re.findall(r"[\w']+|[^\s\w]", sentence)
-        corrected = []
+        corrected = sentence
+        matches = list(re.finditer(r"\b\w+\b", sentence))
 
-        for token in tokens:
-            stripped = token.translate(self.punct_table).lower()
-            
-            if stripped and stripped not in self.spell:
-                fix = self._get_substitution_correction(stripped)
-                if fix:
-                    corrected.append(fix)
-                else:
-                    corrected.append(token)
-            else:
-                corrected.append(token)
+        for match in reversed(matches):
+            word = match.group()
 
-        return " ".join(corrected)
-
-    # ---------------------------------------------------------
-    # Internal helpers
-    # ---------------------------------------------------------
-    def _get_substitution_correction(self, word: str):
-        if not word:
-            return None
-            
-        candidates = self.spell.candidates(word)
-        if not candidates:
-            return None
-
-        valid_corrections = []
-        for c in candidates:
-            # Substitution must preserve length
-            if len(c) != len(word):
+            # SAFETY: If spaCy knows "cuisine", SKIP IT.
+            if self.validator.is_valid(word):
                 continue
 
-            # Count differences (Hamming distance)
-            diff_count = sum(1 for a, b in zip(word, c) if a != b)
-            
-            # Must be at least 1 diff, but not more than allowed distance
-            if 1 <= diff_count <= self.distance:
-                valid_corrections.append(c)
+            if word.lower() in self.spell:
+                continue
 
-        if not valid_corrections:
-            return None
+            fix = self._get_substitution_correction(word)
+            if fix:
+                start, end = match.span()
+                fix = self._match_case(word, fix)
+                corrected = corrected[:start] + fix + corrected[end:]
 
-        # Pick the most frequent valid correction
-        best_word = max(valid_corrections, key=lambda w: self.spell.word_frequency[w])
-        return best_word
+        return corrected
+
+    def _get_substitution_correction(self, word: str) -> Optional[str]:
+        candidates = self.spell.candidates(word)
+        if not candidates: return None
+
+        valid_corrections = []
+        for candidate in candidates:
+            if len(candidate) == len(word):
+                diff = sum(1 for a, b in zip(word.lower(), candidate.lower()) if a != b)
+                if 1 <= diff <= self.distance:
+                    valid_corrections.append(candidate)
+
+        if not valid_corrections: return None
+        return max(valid_corrections, key=lambda w: self.spell.word_frequency[w])
+
+    def _match_case(self, original: str, corrected: str) -> str:
+        if original.isupper(): return corrected.upper()
+        elif original.istitle(): return corrected.capitalize()
+        return corrected

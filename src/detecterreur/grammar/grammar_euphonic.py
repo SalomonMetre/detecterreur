@@ -1,13 +1,16 @@
 import re
+from typing import Tuple
 
 class GrammarEuphonic:
     """
-    Detects missing euphonic markers in French inversion questions using robust Regex.
-    
-    Catches collisions like:
-    1. "A il" or "A-il"       -> "A-t-il" (Vowel-Vowel collision)
-    2. "Vient il"             -> "Vient-il" (Missing hyphen)
-    
+    Detects and corrects missing euphonic markers in French using regex rules.
+
+    Rules:
+    1. If a verb ends in a vowel and the subject pronoun starts with a vowel,
+       insert "-t-" (e.g., "A il" → "A-t-il", "Parle elle" → "Parle-t-elle").
+    2. If a verb ends in 't' or 'd' and is followed by a subject pronoun,
+       insert a hyphen (e.g., "Vient il" → "Vient-il", "Prend elle" → "Prend-elle").
+
     Category: GRAMMAIRE
     Error: GEUF
     """
@@ -15,69 +18,50 @@ class GrammarEuphonic:
     error_category = "GRAMMAIRE"
 
     def __init__(self):
-        # Target pronouns for inversion
-        pronouns = r"(?:il|elle|on|ils|elles|iel)"
-        
-        # -------------------------------------------------------------------------
-        # Pattern 1: Vowel Collision (Needs -t-)
-        # -------------------------------------------------------------------------
-        # Detects: [Word ending in Vowel] + [Space or Hyphen] + [Pronoun starting with Vowel]
-        # Examples: "Parle elle", "Parle-elle", "Va on", "Va-on"
-        # Excludes: "Parle-t-elle" (already has -t-)
-        #
-        # Group 1: Verb (ending in vowel)
-        # Group 2: Separator (space, hyphen, or space-hyphen-space)
-        # Group 3: Pronoun
-        self.pattern_vowel_collision = re.compile(
-            r"\b([a-zA-Zà-ü]+[aeiouyàâéèêëîïôùûü])(\s*-\s*|\s+)(%s)\b" % pronouns,
-            re.IGNORECASE | re.UNICODE
+        # Subject pronouns involved in inversion
+        self.pronouns = r"(?:il|elle|on|ils|elles|iel)"
+
+        # Vowels (including accented ones common in French verbs)
+        self.vowels = "aeiouyàâéèêëîïôùûü"
+
+        # Pattern 1: Vowel collision → Needs "-t-"
+        # Example: "A il" → "A-t-il"
+        self.pat_vowel = re.compile(
+            rf"\b(\w+[{re.escape(self.vowels)}])\s+({self.pronouns})\b",
+            re.IGNORECASE
         )
 
-        # -------------------------------------------------------------------------
-        # Pattern 2: Missing Hyphen (Needs -)
-        # -------------------------------------------------------------------------
-        # Detects: [Word ending in T or D] + [Space] + [Pronoun]
-        # Examples: "Vient il", "Prend elle"
-        # Excludes: "Vient-il" (already has hyphen)
-        #
-        # Group 1: Verb (ending in t or d)
-        # Group 2: Pronoun
-        self.pattern_missing_hyphen = re.compile(
-            r"\b([a-zA-Zà-ü]+[td])\s+(%s)\b" % pronouns,
-            re.IGNORECASE | re.UNICODE
+        # Pattern 2: Missing hyphen → Needs "-"
+        # Example: "Vient il" → "Vient-il"
+        self.pat_consonant = re.compile(
+            r"\b(\w+[td])\s+(%s)\b" % self.pronouns,
+            re.IGNORECASE
         )
 
-    # -----------------------------------------------------
-    # Public API
-    # -----------------------------------------------------
-    def get_error(self, sentence: str):
+    def get_error(self, sentence: str) -> Tuple[str, str, bool]:
         """
-        Returns: (error_category, error_name, True/False)
+        Detects missing euphonic markers in the sentence.
+        Returns:
+            Tuple[str, str, bool]: (error_category, error_name, has_error)
         """
-        # Check Pattern 1 (Need -t-)
-        if self.pattern_vowel_collision.search(sentence):
+        if self.pat_vowel.search(sentence):
             return self.error_category, self.error_name, True
-
-        # Check Pattern 2 (Need -)
-        if self.pattern_missing_hyphen.search(sentence):
+        if self.pat_consonant.search(sentence):
             return self.error_category, self.error_name, True
-                    
         return self.error_category, self.error_name, False
 
     def correct(self, sentence: str) -> str:
         """
-        Applies regex substitution to insert -t- or - where needed.
+        Corrects missing euphonic markers in the sentence.
+        Returns:
+            str: The corrected sentence.
         """
         corrected = sentence
-        
-        # Fix 1: Insert -t- for vowel collisions
-        # "Parle elle" -> "Parle-t-elle"
-        # "Parle-elle" -> "Parle-t-elle"
-        # We replace the bad separator (Group 2) with "-t-"
-        corrected = self.pattern_vowel_collision.sub(r"\1-t-\3", corrected)
-        
-        # Fix 2: Insert - for missing hyphens
-        # "Vient il" -> "Vient-il"
-        corrected = self.pattern_missing_hyphen.sub(r"\1-\2", corrected)
-        
+
+        # Fix 1: Insert "-t-" for vowel collisions
+        corrected = self.pat_vowel.sub(r"\1-t-\2", corrected)
+
+        # Fix 2: Insert "-" for verbs ending in 't' or 'd'
+        corrected = self.pat_consonant.sub(r"\1-\2", corrected)
+
         return corrected

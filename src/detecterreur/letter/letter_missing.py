@@ -1,69 +1,95 @@
 import re
 import string
+from typing import Tuple, Optional
 from spellchecker import SpellChecker
+from detecterreur.validator import Validator  # 1. Import Validator
 
 class LetterMissing:
-    
+    """
+    Detects and corrects missing letter errors (omissions) in French words.
+    Example: "commne" -> "commune" (Missing 'u')
+
+    Category: ORTHOGRAPHE
+    Error: OMIS
+    """
     error_name = "OMIS"
     error_category = "ORTHOGRAPHE"
 
-    def __init__(self, language="fr", distance=1):
+    def __init__(self, language: str = "fr", distance: int = 1):
         """
-        Detects missing letter errors (omissions).
-        Example: "commne" -> "commune" (Missing 'u')
-        
         Args:
+            language (str): Language for spell checking.
             distance (int): Max number of missing characters allowed.
-                            If distance=1, "aple" -> "apple" is valid.
         """
         self.spell = SpellChecker(language=language, distance=distance)
         self.distance = distance
         self.punct_table = str.maketrans("", "", string.punctuation)
+        self.validator = Validator()  # 2. Instantiate Validator
 
-    def get_error(self, sentence: str):
+    def get_error(self, sentence: str) -> Tuple[str, str, bool]:
         """
-        Returns: (error_category, error_name, True/False)
+        Detects missing letter errors in the sentence.
+        Returns:
+            Tuple[str, str, bool]: (error_category, error_name, has_error)
         """
-        words = re.findall(r"\b\w+\b", sentence.lower())
+        words = re.findall(r"\b\w+\b", sentence)
         
-        unknown = [w for w in words if w not in self.spell]
+        for word in words:
+            # 3. SAFETY CHECK: If spaCy knows the word, SKIP IT.
+            if self.validator.is_valid(word):
+                continue
 
-        if not unknown:
-            return self.error_category, self.error_name, False
-
-        for w in unknown:
-            if self.is_error(w):
+            # Check only unknown words
+            if self.is_error(word):
                 return self.error_category, self.error_name, True
 
         return self.error_category, self.error_name, False
 
-    def is_error(self, word: str) -> bool:
-        best_candidate = self._get_missing_correction(word)
-        return best_candidate is not None
-
     def correct(self, sentence: str) -> str:
-        tokens = re.findall(r"[\w']+|[^\s\w]", sentence)
-        corrected = []
+        """
+        Corrects missing letter errors in the sentence.
+        Uses re.finditer to preserve original whitespace and punctuation.
+        """
+        corrected = sentence
+        
+        # Iterate in reverse to keep indices valid during replacement
+        matches = list(re.finditer(r"\b\w+\b", sentence))
+        
+        for match in reversed(matches):
+            word = match.group()
+            lower_word = word.lower()
 
-        for token in tokens:
-            stripped = token.translate(self.punct_table).lower()
+            # 4. SAFETY CHECK during correction too
+            if self.validator.is_valid(word):
+                continue
+            
+            # Additional check for pyspellchecker's own dictionary
+            if lower_word in self.spell:
+                continue
 
-            if stripped and stripped not in self.spell:
-                fix = self._get_missing_correction(stripped)
-                if fix:
-                    corrected.append(fix)
-                else:
-                    corrected.append(token)
-            else:
-                corrected.append(token)
+            fix = self._get_missing_correction(lower_word)
+            if fix:
+                # Apply case matching
+                final_fix = self._match_case(word, fix)
+                
+                # Replace in string
+                start, end = match.span()
+                corrected = corrected[:start] + final_fix + corrected[end:]
 
-        return " ".join(corrected)
+        return corrected
+
+    def is_error(self, word: str) -> bool:
+        """
+        Checks if the word contains a missing letter error.
+        """
+        # Ensure we check the lower case version
+        return self._get_missing_correction(word.lower()) is not None
 
     # ---------------------------------------------------------
     # Internal helpers
     # ---------------------------------------------------------
-    def _get_missing_correction(self, word: str):
-        if not word: 
+    def _get_missing_correction(self, word: str) -> Optional[str]:
+        if not word:
             return None
 
         candidates = self.spell.candidates(word)
@@ -71,28 +97,35 @@ class LetterMissing:
             return None
 
         valid_corrections = []
-        for c in candidates:
-            # 1. Candidate must be LONGER (we are looking for missing letters in the original)
-            if len(c) > len(word):
-                # 2. The difference in length must be <= allowed distance
-                diff = len(c) - len(word)
+        for candidate in candidates:
+            # OMIS Rule: Candidate must be LONGER than word (we add to word to fix)
+            if len(candidate) > len(word):
+                diff = len(candidate) - len(word)
                 if diff <= self.distance:
-                    # 3. The ORIGINAL word must be a subsequence of the CANDIDATE
-                    # (Meaning: if we delete letters from Candidate, we get Original)
-                    if self._is_subsequence(sub=word, main=c):
-                        valid_corrections.append(c)
+                    # Subsequence check: "commne" is subseq of "commune"
+                    if self._is_subsequence(word, candidate):
+                        valid_corrections.append(candidate)
 
         if not valid_corrections:
             return None
 
-        # Pick the most frequent valid correction
-        best_word = max(valid_corrections, key=lambda w: self.spell.word_frequency[w])
-        return best_word
-
+        # FIX: Use dictionary access [w] instead of .word_probability(w)
+        return max(valid_corrections, key=lambda w: self.spell.word_frequency[w])
+    
     def _is_subsequence(self, sub: str, main: str) -> bool:
         """
-        Returns True if 'sub' can be formed by deleting characters from 'main'.
+        Checks if 'sub' can be formed by deleting characters from 'main'.
+        Example: sub="commne", main="commune" -> True
         """
         it = iter(main)
-        # Check if every char in 'sub' is found in 'main' in the correct order
         return all(char in it for char in sub)
+
+    def _match_case(self, original: str, corrected: str) -> str:
+        """
+        Matches the case of the original word to the corrected word.
+        """
+        if original.isupper():
+            return corrected.upper()
+        elif original.istitle():
+            return corrected.capitalize()
+        return corrected

@@ -1,18 +1,26 @@
-from detecterreur.grammar.grammar_conjugation import GrammarConjugation
+from pathlib import Path
+from detecterreur.grammar.grammar_agreement import GrammarAgreement
 
 def main():
-    gc = GrammarConjugation()
+    ga = GrammarAgreement()
 
-    with open("testing/grammar/grammar_conjugation.txt", "r", encoding="utf-8") as f:
+    # Calculate path relative to THIS script file
+    # This points to: .../detecterreur/testing/grammaire/grammar_agreement.txt
+    current_dir = Path(__file__).parent
+    file_path = current_dir / "grammar_agreement.txt"
+
+    with open(file_path, "r", encoding="utf-8") as f:
         sentences = [line.strip() for line in f if line.strip()]
 
     for s in sentences:
-        has_error, error_code = gc.get_error(s)
+        # Unpack the triplet: (Category, ErrorName, Boolean)
+        category, error_code, has_error = ga.get_error(s)
+        
         print(f"Sentence: {s}")
-        print(f"Has conjugation error? {has_error} | Code: {error_code}")
+        print(f"Has agreement error? {has_error} | Code: {error_code} ({category})")
 
         if has_error:
-            corrected = gc.correct(s)
+            corrected = ga.correct(s)
             print(f"Corrected: {corrected}")
 
         print("-" * 60)

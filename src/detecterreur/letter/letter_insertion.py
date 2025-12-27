@@ -1,97 +1,74 @@
 import re
-import string
 from spellchecker import SpellChecker
+from typing import Tuple, Optional
+from detecterreur.validator import Validator  # 1. Import Validator
 
 class LetterInsertion:
-    
+    """
+    Detects insertion errors (extra letter).
+    Example: "commmune" -> "commune"
+    Category: ORTHOGRAPHE, Error: OINS
+    """
     error_name = "OINS"
     error_category = "ORTHOGRAPHE"
 
     def __init__(self, language="fr", distance=1):
-        """
-        Detects insertion-type spelling errors (extra unnecessary letters).
-        Args:
-            distance (int): Max number of extra characters allowed.
-                            If distance=2, 'commmune' -> 'commune' (1 del) is valid.
-        """
         self.spell = SpellChecker(language=language, distance=distance)
         self.distance = distance
-        self.punct_table = str.maketrans("", "", string.punctuation)
+        self.validator = Validator()  # 2. Instantiate Validator
 
-    def get_error(self, sentence: str):
-        """
-        Returns: (error_category, error_name, True/False)
-        """
-        words = re.findall(r"\b\w+\b", sentence.lower())
-        
-        unknown = [w for w in words if w not in self.spell]
+    def get_error(self, sentence: str) -> Tuple[str, str, bool]:
+        words = re.findall(r"\b\w+\b", sentence)
+        for word in words:
+            # 3. SAFETY CHECK: If spaCy knows the word, SKIP IT.
+            if self.validator.is_valid(word):
+                continue
 
-        # Fix: Ensure we always return 3 values
-        if not unknown:
-            return self.error_category, self.error_name, False
-
-        for w in unknown:
-            if self.is_error(w):
+            # Only check truly unknown words
+            if word.lower() not in self.spell and self._get_correction(word):
                 return self.error_category, self.error_name, True
-
         return self.error_category, self.error_name, False
 
-    def is_error(self, word: str) -> bool:
-        best_candidate = self._get_insertion_correction(word)
-        return best_candidate is not None
-
     def correct(self, sentence: str) -> str:
-        tokens = re.findall(r"[\w']+|[^\s\w]", sentence)
-        corrected = []
+        corrected = sentence
+        matches = list(re.finditer(r"\b\w+\b", sentence))
+        
+        for match in reversed(matches):
+            word = match.group()
+            
+            # 4. SAFETY CHECK during correction too
+            if self.validator.is_valid(word):
+                continue
+            
+            if word.lower() in self.spell: 
+                continue
+            
+            fix = self._get_correction(word)
+            if fix:
+                start, end = match.span()
+                if word[0].isupper(): fix = fix.capitalize()
+                corrected = corrected[:start] + fix + corrected[end:]
+        return corrected
 
-        for token in tokens:
-            stripped = token.translate(self.punct_table).lower()
-
-            if stripped and stripped not in self.spell:
-                fix = self._get_insertion_correction(stripped)
-                if fix:
-                    corrected.append(fix)
-                else:
-                    corrected.append(token)
-            else:
-                corrected.append(token)
-
-        return " ".join(corrected)
-
-    # ---------------------------------------------------------
-    # Internal helpers
-    # ---------------------------------------------------------
-    def _get_insertion_correction(self, word: str):
-        if not word: 
-            return None
-
+    def _get_correction(self, word: str) -> Optional[str]:
         candidates = self.spell.candidates(word)
-        if not candidates:
-            return None
-
-        valid_corrections = []
+        if not candidates: return None
+        
+        valid = []
         for c in candidates:
-            # 1. Candidate must be shorter (we are looking for insertion errors in the original)
-            if len(word) > len(c):
-                # 2. The difference in length must be <= allowed distance
-                diff = len(word) - len(c)
-                if diff <= self.distance:
-                    # 3. Candidate must be a subsequence (only deletions allowed)
-                    if self._is_subsequence(sub=c, main=word):
-                        valid_corrections.append(c)
+            # OINS Rule: Candidate must be SHORTER than word (we delete from word to fix)
+            if len(c) >= len(word): continue
+            
+            diff = len(word) - len(c)
+            if diff <= self.distance:
+                # Subsequence check: "commune" is subseq of "commmune"
+                if self._is_subsequence(c, word):
+                    valid.append(c)
 
-        if not valid_corrections:
-            return None
-
-        # Pick the most frequent valid correction
-        best_word = max(valid_corrections, key=lambda w: self.spell.word_frequency[w])
-        return best_word
+        if not valid: return None
+        # FIX: Use dictionary access
+        return max(valid, key=lambda w: self.spell.word_frequency[w])
 
     def _is_subsequence(self, sub: str, main: str) -> bool:
-        """
-        Returns True if 'sub' can be formed by deleting 0 or more characters from 'main'.
-        Example: sub='bana', main='banana' -> True
-        """
         it = iter(main)
-        # Check if every char in 'sub' is found in 'main' in the correct order
         return all(char in it for char in sub)

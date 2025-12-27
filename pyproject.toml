@@ -9,7 +9,8 @@ name = "detecterreur"
 version = "0.1.0"
 description = "A Python package to detect, correct, and provide educational feedback on errors in French written production for L2 learners."
 readme = "README.md"
-requires-python = ">=3.10"
+# FIX: Explicitly exclude Python 3.14 to allow uv sync to work automatically
+requires-python = ">=3.10, <3.14"
 
 # External dependencies required for the project
 dependencies = [

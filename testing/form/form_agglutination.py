@@ -1,15 +1,23 @@
+from pathlib import Path
 from detecterreur.form.form_agglutination import FormAgglutination
 
 def main():
-    fa = FormAgglutination(distance=2)
+    # Initialize the detector
+    fa = FormAgglutination(distance=1)
 
-    with open("testing/form/form_agglutination.txt", "r", encoding="utf-8") as f:
+    # robustly find the test file relative to this script
+    current_dir = Path(__file__).parent
+    file_path = current_dir / "form_agglutination.txt"
+
+    with open(file_path, "r", encoding="utf-8") as f:
         sentences = [line.strip() for line in f if line.strip()]
 
     for s in sentences:
-        has_error, error_code = fa.get_error(s)
+        # Unpack the triplet: (Category, ErrorName, Boolean)
+        category, error_code, has_error = fa.get_error(s)
+        
         print(f"Sentence: {s}")
-        print(f"Has agglutination error? {has_error} | Code: {error_code}")
+        print(f"Has agglutination error? {has_error} | Code: {error_code} ({category})")
 
         if has_error:
             corrected = fa.correct(s)
