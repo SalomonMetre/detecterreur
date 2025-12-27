@@ -1,42 +1,44 @@
 # detecterreur
 
-`detecterreur` is a Python package designed to **detect, correct, and provide educational feedback** on errors made by L2 learners in French written production. It focuses on multiple types of errors, including **letter, word, grammar, form, syntax, and punctuation** mistakes.
+`detecterreur` is a Python package designed to **detect, correct, and provide educational feedback** on errors made by L2 learners in French written production. It focuses on multiple types of errors, including **orthography, grammar, form, syntax, and punctuation**.
 
-This tool can be integrated into language learning platforms, educational apps, or used for research on French L2 learner errors.
+Unlike standard spellcheckers, `detecterreur` distinguishes between **cascaded correction** (pipeline) and **independent suggestions** (atomic error reporting), making it ideal for educational platforms.
 
 ---
 
 ## Features
 
-* **Letter-level errors**
+The package organizes errors into 5 logical categories:
 
-  * LINS: Letter insertion
-  * LMIS: Letter missing
-  * LORD: Letter order
-  * LSUB: Letter substitution
+### 1. **Form-level errors (FORME)**
 
-* **Word-level errors**
+* **FAGL**: Agglutination
+* **FDIA**: Diacritics/Accents
+* **FMAJ**: Capitalization
 
-  * SORD: Word order
-  * SMIS: Word missing
-  * SINS: Word insertion
-  * SRED: Word redundancy
+### 2. **Orthography errors (ORTHOGRAPHE)**
 
-* **Form-level errors**
+* **OINS**: Letter insertion
+* **OMIS**: Letter missing
+* **OSUB**: Letter substitution
+* **OORD**: Letter order
 
-  * FAGL: Form agglutination
-  * FDIA: Form diacritics
-  * FMAJ: Uppercase/lowercase
+### 3. **Grammar-level errors (GRAMMAIRE)**
 
-* **Grammar-level errors**
+* **GCON**: Conjugation
+* **GACC**: Agreement
+* **GEUF**: Euphony
 
-  * GCON: Grammar conjugation
-  * GEUF: Grammar euphony
-  * GACC: Grammar agreement
+### 4. **Syntax errors (SYNTAXE)**
 
-* **Punctuation errors**
+* **SORD**: Word order
+* **SMIS**: Word missing
+* **SINS**: Word insertion
+* **SRED**: Redundancy
 
-  * PUNC: Detects and corrects punctuation mistakes
+### 5. **Punctuation (PONCTUATION)**
+
+* **PUNC**: Spacing and missing punctuation
 
 ---
 
@@ -44,67 +46,57 @@ This tool can be integrated into language learning platforms, educational apps, 
 
 ```bash
 pip install git+https://github.com/SalomonMetre/detecterreur
+python -m spacy download fr_core_news_sm
+
 ```
+
+---
 
 ## Quickstart
 
+The core component is the `Orchestrator`, which manages all detection layers.
+
 ```python
-from detecterreur.letter.letter_insertion import LetterInsertion
+from detecterreur.orchestrator import Orchestrator
 
-li = LetterInsertion()
+# 1. Initialize
+orch = Orchestrator()
 
-sentence = "Je suis allee a le marchet hier."
-has_error = li.has_insertion_error(sentence)
-print("Has letter insertion error?", has_error)
+text = "..."  # Your input text here
 
-corrected = li.correct(sentence)
-print("Corrected:", corrected)
+# 2. Get Independent Suggestions
+# Returns atomic suggestions per detector. 
+# Format: List[Tuple[Category, Name, HasError, SuggestedText]]
+suggestions = orch.get_suggestions(text)
+
+for cat, name, has_err, suggestion in suggestions:
+    if has_err:
+        print(f"[{cat}] {name} detected error. Suggestion: {suggestion}")
+
+# 3. Get Final Cascaded Correction
+# Applies all corrections sequentially.
+correction = orch.correct(text)
+print(f"Final Output: {correction}")
+
 ```
 
 ---
 
 ## How it works
 
-* The library uses the **PySpellChecker** for detecting and correcting spelling and letter-level errors.
-* It detects errors by comparing words to a French dictionary and uses **Damerau-Levenshtein distance** for fine-grained detection of insertions, deletions, substitutions, and transpositions.
-* Sentences are analyzed word-by-word, and corrections preserve punctuation and capitalization where possible.
+### 1. The Validator (Gatekeeper)
 
-## Usage
+The system uses a **Validator** singleton powered by `spaCy`. Before any orthographic detector processes a word, it queries the Validator to check if the word exists in the French language model. If the word is valid, it is protected from modification.
 
-* Detect if a sentence has letter insertion errors:
+### 2. Independent vs. Cascaded Logic
 
-```python
-from detecterreur.letter.letter_insertion import LetterInsertion
+* **`get_suggestions()`**: Runs each detector on the **original** input string. This ensures that errors are reported in isolation, preventing the correction of one error from obscuring another in the report.
+* **`correct()`**: Runs a **Pipeline**. The output of the Structure layer becomes the input of the Orthography layer, followed by Grammar, Syntax, and Punctuation. This ensures the final output is coherent.
 
-li = LetterInsertion()
-sentence = "Ceci estt un test."
-print(li.has_insertion_error(sentence))  # True
-```
+### 3. Specialized Logic
 
-* Correct the sentence:
-
-```python
-corrected = li.correct(sentence)
-print(corrected)  # "Ceci est un test."
-```
-
----
-
-## Educational Feedback
-
-* Each error type can be reported separately, allowing for **tailored feedback** for learners.
-* For example, you can highlight letter insertion mistakes (LINS) while leaving other errors untouched, making it easier for learners to focus on one error type at a time.
-
----
-
-## Contributing
-
-Contributions are welcome! You can:
-
-* Improve French dictionaries
-* Add new error detection modules
-* Enhance correction algorithms
-* Add unit tests and examples
+* **Agglutination (FAGL)**: Uses geometric splitting logic based on a strictly defined set of "glue words" (pronouns, determiners) to prevent false positives on compound words.
+* **Orthography**: Uses strictly bounded Damerau-Levenshtein distance calculations combined with frequency analysis, applied only to words rejected by the Validator.
 
 ---
 

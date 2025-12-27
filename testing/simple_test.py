@@ -1,15 +1,16 @@
-# import orchestrator
-
 from detecterreur.orchestrator import Orchestrator
 
+# 1. Init
 orch = Orchestrator()
 input_sentence = "Je vas mal."
 
-# get suggestions
+# 2. Get Layered Suggestions (List of tuples)
 suggestions = orch.get_suggestions(input_sentence)
-for suggestion in suggestions:
-    print(f"{suggestion[0]} {suggestion[1]}:{suggestion[2]}:{suggestion[3]}")
 
-# proposed correction
-correction = orch.correct(input_sentence)
-print(correction)
+# 3. Print exactly as requested: CATEGORY SPACE NAME:BOOL:TEXT
+for cat, name, has_err, text in suggestions:
+    print(f"{cat} {name}:{has_err}:{text}")
+
+# 4. Final Correction
+print("\nFinal Correction:")
+print(orch.correct(input_sentence))
