@@ -1,35 +1,47 @@
 import spacy
+from spellchecker import SpellChecker
 
 class Validator:
     _instance = None
     _nlp = None
+    _spell = None
 
     def __new__(cls):
         if cls._instance is None:
             cls._instance = super(Validator, cls).__new__(cls)
             try:
-                # Load only the vocabulary for speed (no parser/ner needed)
+                # 1. Chargement de spaCy (léger)
                 cls._nlp = spacy.load("fr_core_news_sm", disable=["parser", "ner", "lemmatizer", "textcat"])
+                # 2. Chargement de pyspellchecker (fr)
+                cls._spell = SpellChecker(language='fr')
             except OSError:
                 raise ImportError("Please run: python -m spacy download fr_core_news_sm")
         return cls._instance
 
     def is_valid(self, word: str) -> bool:
         """
-        Returns True if the word is a known, valid French word.
+        Vérifie si un mot est valide en utilisant spaCy ET pyspellchecker.
         """
-        # 1. Ignore tiny words/punctuation (except specific valid ones)
-        if len(word) < 2 and word.lower() not in ["y", "a", "à"]:
+        word_clean = word.strip().lower()
+
+        # 1. Filtre rapide (longueur et exceptions)
+        if len(word_clean) < 2 and word_clean not in ["y", "a", "à"]:
             return False
             
-        # 2. Ask spaCy: Is this word in the French vocabulary?
-        # is_oov = "Is Out Of Vocabulary"
-        # If is_oov is False, the word is VALID.
-        if not self._nlp.vocab[word].is_oov:
+        # 2. Test spaCy (Très rapide, basé sur le hash du vocabulaire)
+        if not self._nlp.vocab[word_clean].is_oov:
             return True
         
-        # 3. Check lowercase version (handles "Cuisine" at start of sentence)
-        if not self._nlp.vocab[word.lower()].is_oov:
+        # 3. Test pyspellchecker (Plus complet pour les mots rares)
+        # On utilise .known pour voir si le dictionnaire pur Python le reconnaît
+        if word_clean in self._spell.known([word_clean]):
             return True
             
         return False
+
+# --- TEST ---
+validator = Validator()
+mots_a_tester = ["maison", "maizone", "anticonstitutionnellement", "FastAPI", "cuisine"]
+
+for m in mots_a_tester:
+    print(f"'{m}' valide ? {validator.is_valid(m)}")
