@@ -47,9 +47,9 @@ class Orchestrator:
 
         # Orthography
         self.fdia = FormDiacritic(distance=1)
-        self.lins = LetterInsertion()
-        self.lmis = LetterMissing()
-        self.lsub = LetterSubstitution()
+        self.lins = LetterInsertion(distance=2)
+        self.lmis = LetterMissing(distance=2)
+        self.lsub = LetterSubstitution(distance=2)
         self.lord = LetterOrder()
 
         # Syntax
