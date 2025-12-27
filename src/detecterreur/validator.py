@@ -38,10 +38,3 @@ class Validator:
             return True
             
         return False
-
-# --- TEST ---
-validator = Validator()
-mots_a_tester = ["maison", "maizone", "anticonstitutionnellement", "FastAPI", "cuisine"]
-
-for m in mots_a_tester:
-    print(f"'{m}' valide ? {validator.is_valid(m)}")
