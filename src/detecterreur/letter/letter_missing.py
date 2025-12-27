@@ -2,12 +2,12 @@ import re
 import string
 from typing import Tuple, Optional
 from spellchecker import SpellChecker
-from detecterreur.validator import Validator  # 1. Import Validator
+from detecterreur.validator import Validator 
 
 class LetterMissing:
     """
-    Detects and corrects missing letter errors (omissions) in French words.
-    Example: "commne" -> "commune" (Missing 'u')
+    Détecte et corrige les erreurs d'omission (lettre manquante).
+    Exemple: "commne" -> "commune" (Manque le 'u')
 
     Category: ORTHOGRAPHE
     Error: OMIS
@@ -16,30 +16,23 @@ class LetterMissing:
     error_category = "ORTHOGRAPHE"
 
     def __init__(self, language: str = "fr", distance: int = 1):
-        """
-        Args:
-            language (str): Language for spell checking.
-            distance (int): Max number of missing characters allowed.
-        """
         self.spell = SpellChecker(language=language, distance=distance)
         self.distance = distance
-        self.punct_table = str.maketrans("", "", string.punctuation)
-        self.validator = Validator()  # 2. Instantiate Validator
+        self.validator = Validator()
 
     def get_error(self, sentence: str) -> Tuple[str, str, bool]:
         """
-        Detects missing letter errors in the sentence.
-        Returns:
-            Tuple[str, str, bool]: (error_category, error_name, has_error)
+        Détecte si la phrase contient un mot avec une lettre manquante.
         """
+        # On extrait uniquement les mots (lettres/chiffres), ignorant la ponctuation
         words = re.findall(r"\b\w+\b", sentence)
         
         for word in words:
-            # 3. SAFETY CHECK: If spaCy knows the word, SKIP IT.
+            # 1. Sécurité : Si spaCy ou pyspellchecker connaissent le mot, on l'ignore
             if self.validator.is_valid(word):
                 continue
 
-            # Check only unknown words
+            # 2. On vérifie si c'est une omission
             if self.is_error(word):
                 return self.error_category, self.error_name, True
 
@@ -47,32 +40,27 @@ class LetterMissing:
 
     def correct(self, sentence: str) -> str:
         """
-        Corrects missing letter errors in the sentence.
-        Uses re.finditer to preserve original whitespace and punctuation.
+        Corrige les omissions en préservant la structure originale.
         """
         corrected = sentence
-        
-        # Iterate in reverse to keep indices valid during replacement
         matches = list(re.finditer(r"\b\w+\b", sentence))
         
+        # Inversion pour préserver les indices de remplacement
         for match in reversed(matches):
             word = match.group()
             lower_word = word.lower()
 
-            # 4. SAFETY CHECK during correction too
+            # Sécurité durant la correction
             if self.validator.is_valid(word):
                 continue
             
-            # Additional check for pyspellchecker's own dictionary
-            if lower_word in self.spell:
+            # Si le mot (en minuscule) est dans le dictionnaire, on ne touche à rien
+            if lower_word in self.spell.word_frequency:
                 continue
 
             fix = self._get_missing_correction(lower_word)
             if fix:
-                # Apply case matching
                 final_fix = self._match_case(word, fix)
-                
-                # Replace in string
                 start, end = match.span()
                 corrected = corrected[:start] + final_fix + corrected[end:]
 
@@ -80,13 +68,12 @@ class LetterMissing:
 
     def is_error(self, word: str) -> bool:
         """
-        Checks if the word contains a missing letter error.
+        Vérifie si le mot présente une erreur d'omission.
         """
-        # Ensure we check the lower case version
         return self._get_missing_correction(word.lower()) is not None
 
     # ---------------------------------------------------------
-    # Internal helpers
+    # Helpers Internes
     # ---------------------------------------------------------
     def _get_missing_correction(self, word: str) -> Optional[str]:
         if not word:
@@ -98,31 +85,30 @@ class LetterMissing:
 
         valid_corrections = []
         for candidate in candidates:
-            # OMIS Rule: Candidate must be LONGER than word (we add to word to fix)
+            # Règle OMIS : Le candidat est PLUS LONG (on a oublié une lettre)
             if len(candidate) > len(word):
                 diff = len(candidate) - len(word)
                 if diff <= self.distance:
-                    # Subsequence check: "commne" is subseq of "commune"
+                    # Sous-séquence : "commne" est contenu dans "commune"
                     if self._is_subsequence(word, candidate):
                         valid_corrections.append(candidate)
 
         if not valid_corrections:
             return None
 
-        # FIX: Use dictionary access [w] instead of .word_probability(w)
+        # On choisit le mot le plus fréquent dans la langue française
         return max(valid_corrections, key=lambda w: self.spell.word_frequency[w])
     
     def _is_subsequence(self, sub: str, main: str) -> bool:
         """
-        Checks if 'sub' can be formed by deleting characters from 'main'.
-        Example: sub="commne", main="commune" -> True
+        Vérifie si 'sub' peut être formé en supprimant des lettres dans 'main'.
         """
         it = iter(main)
         return all(char in it for char in sub)
 
     def _match_case(self, original: str, corrected: str) -> str:
         """
-        Matches the case of the original word to the corrected word.
+        Applique la casse du mot original au mot corrigé.
         """
         if original.isupper():
             return corrected.upper()
