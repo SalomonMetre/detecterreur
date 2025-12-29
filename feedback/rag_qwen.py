@@ -7,6 +7,19 @@ from detecterreur.form.form_diacritic import FormDiacritic
 from transformers import AutoModelForCausalLM, AutoTokenizer
 from codecarbon import EmissionsTracker
 
+
+def load_error():
+    """ Will not be present in the final version, its only purpose is to simulate DetectErreur."""
+    # Initialize detector
+    err = FormDiacritic()
+
+    sentence = "Je suis francais"
+    error = err.get_error(sentence)
+    error_name = error[1]
+    correction = err.correct(sentence)
+
+    return sentence, error_name, correction
+
 def find_changed_word(original, corrected):
     """ Finds the first changed word pair (incorrect, correct)."""
     orig_words = original.split()
@@ -38,7 +51,7 @@ def load_resources():
     """
     
     # 1. Initialize Detector
-    dia = FormDiacritic()
+    err = FormDiacritic()
     
     # Use absolute path relative to script location
     script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -62,7 +75,7 @@ def load_resources():
     model = AutoModelForCausalLM.from_pretrained(model_name, torch_dtype="auto", device_map="auto")
     
     # print("All resources loaded successfully.")
-    return dia, rules_df, embedding_model, tokenizer, model
+    return err, rules_df, embedding_model, tokenizer, model
 
 # --- 2. RAG RETRIEVAL LOGIC ---
 
@@ -142,7 +155,7 @@ def generate_feedback(sentence, corrected_sentence, incorrect_word, corrected_wo
     
     return generated_text
 
-def process_request(sentence, corrected_sentence, dia, rules_df, embedding_model, tokenizer, model):
+def process_request(sentence, corrected_sentence, err, rules_df, embedding_model, tokenizer, model):
     """
     USER REQUEST: Processes a single input sentence.
     This is what runs every time a user clicks 'Check'.
@@ -151,7 +164,7 @@ def process_request(sentence, corrected_sentence, dia, rules_df, embedding_model
     incorrect_word, corrected_word_val = find_changed_word(sentence, corrected_sentence)
     
     # 2. Detect Error Type
-    has_error, error_name = dia.get_error(sentence)
+    has_error, error_name = err.get_error(sentence)
     
     if not has_error:
         return "Aucune erreur détectée."

@@ -1,7 +1,6 @@
 import pandas as pd
 import numpy as np
 import os
-import torch
 from sklearn.metrics.pairwise import cosine_similarity
 from detecterreur.form.form_diacritic import FormDiacritic
 import ollama
@@ -13,7 +12,7 @@ def load_error():
     # Initialize detector
     err = FormDiacritic()
 
-    sentence = "Je suis francais"
+    sentence = "Ouvre la fenetre"
     error = err.get_error(sentence)
     error_name = error[1]
     correction = err.correct(sentence)
@@ -90,14 +89,14 @@ def retrieve_context(df, prompt_text, embedding_model, top_k=5):
     print(f"Retrieved {top_k} relevant rules (top distance: {top_k_results['distance'].iloc[0]:.4f}).")
     return context
 
-def generate_feedback_ollama(sentence, corrected_sentence, incorrect_word, corrected_word, context, model_name="ministral-3:3b"):
+def generate_feedback_ollama(sentence, corrected_sentence, incorrect_word, corrected_word, context, model_name="mistral:7b-instruct"):
     """Creates the final RAG prompt and generates the model's response."""
 
     # Combined prompt (System + User) for better adherence with Mistral models
     prompt = f"""Tu es un assistant pédagogique expert en grammaire française.
 Ton but est d'expliquer une correction à un élève de manière claire, précise et sans jargon technique.
 
-Voici les règles de grammaire disponibles (Contexte) :
+Voici les règles de grammaire disponibles, ensembre appellées "Contexte" :.
 {context}
 
 Voici la correction à analyser :
@@ -107,8 +106,8 @@ Voici la correction à analyser :
 - Mot corrigé : "{corrected_word}"
 
 Instructions :
-1. Utilise la règle pertinente du contexte pour expliquer pourquoi "{incorrect_word}" a été corrigé en "{corrected_word}".
-2. Si aucune règle ne correspond, explique la correction de manière factuelle.
+1. Lis tout le contexte avant de répondre.
+2. Si tu la trouves dans le contexte, explique la règle grammaticale pour laquelle la correction a été faite, sinon raisonne seul sans le contexte pour donner un retour.
 3. Réponds avec des phrases complètes et grammaticalement correctes en français.
 4. Ne mentionne pas les codes d'erreur (ex: FDIA).
 5. Sois concis (2 à 3 phrases).

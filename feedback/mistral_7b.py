@@ -1,14 +1,14 @@
 import os
-from detecterreur.form.form_diacritic import FormDiacritic
+from detecterreur.grammar.grammar_conjugation import GrammarConjugation
 import ollama
 from codecarbon import EmissionsTracker
 
 def load_error():
     """ Will not be present in the final version, its only purpose is to simulate DetectErreur."""
     # Initialize detector
-    err = FormDiacritic()
+    err = GrammarConjugation()
 
-    sentence = "Je suis francais"
+    sentence = "Tu mangent ta soupe"
     error = err.get_error(sentence)
     error_name = error[1]
     correction = err.correct(sentence)
@@ -43,12 +43,12 @@ def load_resources():
     """
 
     # Initialize detector
-    err = FormDiacritic()
+    err = GrammarConjugation()
 
     return err
 
 def generate_feedback_ollama(sentence, corrected_sentence, incorrect_word, corrected_word, model_name="mistral:7b-instruct"):
-    """Creates the final RAG prompt and generates the model's response."""
+    """Creates the final prompt and generates the model's response."""
 
     # Combined prompt (System + User) for better adherence with Mistral models
     prompt = f"""[INST] Tu es un assistant pédagogique expert en grammaire française.
@@ -61,7 +61,7 @@ Voici la correction à analyser :
 - Mot corrigé : "{corrected_word}"
 
 Instructions :
-1. Explique pourquoi "{incorrect_word}" a été corrigé en "{corrected_word}".
+1. Explique la règle grammaticale pour laquelle la correction a été faite.
 2. Réponds avec des phrases complètes et grammaticalement correctes en français.
 3. Ne mentionne pas les codes d'erreur (ex: FDIA).
 4. Sois concis (2 à 3 phrases).

@@ -92,7 +92,7 @@ def generate_feedback_ollama(sentence, corrected_sentence, incorrect_word, corre
     """Creates the final RAG prompt and generates the model's response."""
 
     # Combined prompt (System + User) for better adherence with Mistral models
-    prompt = f"""Tu es un assistant pédagogique expert en grammaire française.
+    prompt = f"""[INST] Tu es un assistant pédagogique expert en grammaire française.
 Ton but est d'expliquer une correction à un élève de manière claire, précise et sans jargon technique.
 
 Voici les règles de grammaire disponibles (Contexte) :
@@ -111,7 +111,7 @@ Instructions :
 4. Ne mentionne pas les codes d'erreur (ex: FDIA).
 5. Sois concis (2 à 3 phrases).
 
-Explication :"""
+Explication : [/INST]"""
 
     messages = [
         {"role": "user", "content": prompt}
