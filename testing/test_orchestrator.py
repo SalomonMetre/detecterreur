@@ -14,19 +14,19 @@ def run_test(source: Union[List[str], str]):
     # 1. Load Sentences
     sentences = []
     if isinstance(source, list):
-        print(f"\n[INFO] Testing on {len(source)} provided sentences.\n")
+        print(f"\nTesting on {len(source)} provided sentences.\n")
         sentences = source
     elif isinstance(source, str):
         path = Path(source)
         if not path.exists():
-            print(f"[ERROR] File not found: {source}")
+            print(f"File not found: {source}")
             return
-        print(f"\n[INFO] Loading sentences from file: {source}\n")
+        print(f"\nLoading sentences from file: {source}\n")
         try:
             with open(path, "r", encoding="utf-8") as f:
                 sentences = [line.strip() for line in f if line.strip()]
         except Exception as e:
-            print(f"[ERROR] Failed to read file: {e}")
+            print(f"Failed to read file: {e}")
             return
 
     # 2. Process
