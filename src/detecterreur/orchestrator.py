@@ -1,7 +1,7 @@
 from typing import List, Tuple, Dict, Optional, Any
 import re
 
-# --- 1. Form (Shape of words) ---
+# --- 1. Form ---
 from detecterreur.form.form_agglutination import FormAgglutination
 from detecterreur.form.form_case import FormCase
 from detecterreur.form.form_diacritic import FormDiacritic
@@ -9,18 +9,18 @@ from detecterreur.form.form_diacritic import FormDiacritic
 # --- 2. Punctuation ---
 from detecterreur.punctuation.punctuation import Punctuation
 
-# --- 3. Letter (Spelling) ---
+# --- 3. Letter ---
 from detecterreur.letter.letter_insertion import LetterInsertion
 from detecterreur.letter.letter_missing import LetterMissing
 from detecterreur.letter.letter_substitution import LetterSubstitution
 from detecterreur.letter.letter_order import LetterOrder
 
-# --- 4. Grammar (Morphology) ---
+# --- 4. Grammar ---
 from detecterreur.grammar.grammar_conjugation import GrammarConjugation
 from detecterreur.grammar.grammar_agreement import GrammarAgreement
 from detecterreur.grammar.grammar_euphonic import GrammarEuphonic
 
-# --- 5. Syntax (Sentence Structure) ---
+# --- 5. Syntax ---
 from detecterreur.syntax.syntax_order import SyntaxOrder
 from detecterreur.syntax.syntax_insertion import SyntaxInsertion
 from detecterreur.syntax.syntax_missing import SyntaxMissing
@@ -212,7 +212,7 @@ class Orchestrator:
                     results.append((cat, name, has_err, sentence))
 
             except Exception as e:
-                print(f"[WARN] Suggestion generation failed for {detector.error_name}: {e}")
+                print(f"Suggestion generation failed for {detector.error_name}: {e}")
                 results.append((detector.error_category, detector.error_name, False, sentence))
 
         return results
