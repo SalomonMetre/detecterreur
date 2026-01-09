@@ -12,7 +12,7 @@ class LetterMissing:
     Category: ORTHOGRAPHE
     Error: OMIS
     """
-    error_name = "OMIS"
+    error_name = "OMAN"
     error_category = "ORTHOGRAPHE"
 
     def __init__(self, language: str = "fr", distance: int = 1):
