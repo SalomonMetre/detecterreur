@@ -1,0 +1,2209 @@
+[
+    {
+        "sentence": "Partir étudier à l’étranger, pour ou contre?",
+        "macro_categories": [],
+        "categories": []
+    },
+    {
+        "sentence": "Je suis pour à partir étudier à l’étranger, qui nous permet de nous améliorer à la fois sur la structure cognitive et sur la capacité personnelle.",
+        "macro_categories": [
+            "SYNTAXE"
+        ],
+        "categories": [
+            "SINS",
+            "SMAN"
+        ]
+    },
+    {
+        "sentence": "D’une part, on se met dans un nouvel environnement où il n’y a pas personne connue.",
+        "macro_categories": [
+            "SYNTAXE"
+        ],
+        "categories": [
+            "SMAN"
+        ]
+    },
+    {
+        "sentence": "Ce que l’on doit apprendre est de nous adapter à la nouvelle vie plus vite que possible et de bien nous occuper les affaires personnelles.",
+        "macro_categories": [
+            "ORTHOGRAPHE",
+            "SYNTAXE"
+        ],
+        "categories": [
+            "OSUB",
+            "SINS",
+            "SMAN"
+        ]
+    },
+    {
+        "sentence": "D’autre part, c’est une opportunité de rencontre différentes personnes et différentes connaissances qui nous permettent d’élargir le domaine cognitif.",
+        "macro_categories": [
+            "GRAMMAIRE"
+        ],
+        "categories": [
+            "GCON"
+        ]
+    },
+    {
+        "sentence": "Il est possible que la structure d’enseignement est totalement différente de ce que l’on a déjà eu et les moyens d’apprentissage sont beaucoup plus variantes de ce que l’on a perçu.",
+        "macro_categories": [
+            "FORME",
+            "GRAMMAIRE"
+        ],
+        "categories": [
+            "FAGL",
+            "GCON"
+        ]
+    },
+    {
+        "sentence": "Tous ces modifications nous donnent chances de nous perfectionner. - - - Partir étudier à l’étranger, pour ou contre?",
+        "macro_categories": [
+            "GRAMMAIRE",
+            "SYNTAXE"
+        ],
+        "categories": [
+            "GACC",
+            "SMAN"
+        ]
+    },
+    {
+        "sentence": "Aujourd’hui il y a de plus en plus des étudiants partent partent à l’étranger pour continuer leurs études.",
+        "macro_categories": [
+            "ORTHOGRAPHE",
+            "SYNTAXE"
+        ],
+        "categories": [
+            "OINS",
+            "SMAN",
+            "SRED"
+        ]
+    },
+    {
+        "sentence": "Sur cela, différentes personnes ont des différentes opinions.",
+        "macro_categories": [
+            "SYNTAXE"
+        ],
+        "categories": [
+            "SORD"
+        ]
+    },
+    {
+        "sentence": "Personnellement, je suis pour ce comportement c’est la raison pour laquelle je suis en France maintenant.",
+        "macro_categories": [],
+        "categories": []
+    },
+    {
+        "sentence": "Il est évident, pour les étudiants de langues, qu’il et une méthode efficace et importante d’étudier à l’étranger.",
+        "macro_categories": [
+            "ORTHOGRAPHE"
+        ],
+        "categories": [
+            "OMAN"
+        ]
+    },
+    {
+        "sentence": "Cette expérience leur met dans la situation remplie par la circonstance de cette langue.",
+        "macro_categories": [
+            "ORTHOGRAPHE"
+        ],
+        "categories": [
+            "OINS"
+        ]
+    },
+    {
+        "sentence": "Par exemple, si j’apprends le français toujours en Chine, je ne peut presque jamais de parler comme un natif car il y a peu de chance de toucher le vrai méthode que les français parlent.",
+        "macro_categories": [
+            "GRAMMAIRE",
+            "SYNTAXE"
+        ],
+        "categories": [
+            "GACC",
+            "SINS",
+            "SORD"
+        ]
+    },
+    {
+        "sentence": "Pourtant, si je l’apprend en France, je peux parler avec les natifs et apprendre comme ils parlent.",
+        "macro_categories": [
+            "GRAMMAIRE"
+        ],
+        "categories": [
+            "GACC"
+        ]
+    },
+    {
+        "sentence": "En outre, étudier à l’étranger nous permet de être plus proche avec la culture locale.",
+        "macro_categories": [
+            "ORTHOGRAPHE"
+        ],
+        "categories": [
+            "OINS"
+        ]
+    },
+    {
+        "sentence": "Dans notre pays natal, on peut juste connaître la culture et la vie française par la télévision et des nouvelles, mais en France, on peut faire l’expérience des événements en France.",
+        "macro_categories": [
+            "SYNTAXE"
+        ],
+        "categories": [
+            "SRED"
+        ]
+    },
+    {
+        "sentence": "Je prends les manifestations e les grèves comme exemples, en Chine, je ne les vois que sur Internet ou sur les journaux, mais en France, je les vois dans ma vie en réel et cela me donne des sentiment plus forts.",
+        "macro_categories": [
+            "FORME",
+            "GRAMMAIRE",
+            "ORTHOGRAPHE"
+        ],
+        "categories": [
+            "FMAJ",
+            "GACC",
+            "OMAN"
+        ]
+    },
+    {
+        "sentence": "Pour conclure, puisque étudier à l’étranger me donne plus de chance d’étudier la langue française et de connaitre la culture mieux, je suis heureuse d’étudier ici. - - - Partir étudier à l’étranger, pour ou contre?",
+        "macro_categories": [
+            "GRAMMAIRE",
+            "SYNTAXE"
+        ],
+        "categories": [
+            "GACC",
+            "SORD"
+        ]
+    },
+    {
+        "sentence": "Avec la mondialisation, il y a de plus en plus d’élèves qui font le choix d’étudier à l’étranger.",
+        "macro_categories": [],
+        "categories": []
+    },
+    {
+        "sentence": "On a la diversité entre deux opinions sur ce sujet.",
+        "macro_categories": [],
+        "categories": []
+    },
+    {
+        "sentence": "Certes, les élèves qui choisissent étudier à l’étranger vont faire face aux défis d’étude dans un nouveaux environnement et d’adaptation aux circonstances nouvelles.",
+        "macro_categories": [
+            "GRAMMAIRE",
+            "SYNTAXE"
+        ],
+        "categories": [
+            "GACC",
+            "GCON",
+            "SMAN"
+        ]
+    },
+    {
+        "sentence": "Ils ont la possibilité d’avoir des problèmes psychologiques au physiques parce qu’ils ne peuvent pas s’adapter.",
+        "macro_categories": [
+            "ORTHOGRAPHE"
+        ],
+        "categories": [
+            "OSUB"
+        ]
+    },
+    {
+        "sentence": "Cependant, à mon avis, l’étude à l’étranger est favorable à poursuivre les études.",
+        "macro_categories": [
+            "ORTHOGRAPHE"
+        ],
+        "categories": [
+            "OMAN"
+        ]
+    },
+    {
+        "sentence": "Premièrement, les élèves peuvent étudier les connaissances plus avancées dans les régions les plus développées de la discipline.",
+        "macro_categories": [],
+        "categories": []
+    },
+    {
+        "sentence": "Deuxièmement, ils peuvent expérimenter différents concepts et méthodes pédagogiques.",
+        "macro_categories": [],
+        "categories": []
+    },
+    {
+        "sentence": "Cela les aide à développer différentes façons de penser.",
+        "macro_categories": [],
+        "categories": []
+    },
+    {
+        "sentence": "Troisièmement, les différents environnements culturels et sociaux peuvent enrichir les expériences personnelles dans les pays étrangers.",
+        "macro_categories": [],
+        "categories": []
+    },
+    {
+        "sentence": "Donc, je crois qu’il est plus avantageux d’étudier à l’étranger pour les élèves. - - - Partir étudier à l’étranger, pour ou contre?",
+        "macro_categories": [],
+        "categories": []
+    },
+    {
+        "sentence": "Ces dernières années, grâce au développement de la mondialisation, de plus en plus des étudiants choisissent d’aller à l’étranger pour faire leurs études.",
+        "macro_categories": [
+            "ORTHOGRAPHE"
+        ],
+        "categories": [
+            "OINS"
+        ]
+    },
+    {
+        "sentence": "Cela apporte beaucoup d’avantages mais en même temps, il apparait quelques problèmes qui va influencer la décision d’étudier à l’étranger, par exemple, la problème de finance et de sécurité.",
+        "macro_categories": [
+            "GRAMMAIRE"
+        ],
+        "categories": [
+            "GACC"
+        ]
+    },
+    {
+        "sentence": "Personnellement, je suis pour aux étudiant d’étudier à l’étranger.",
+        "macro_categories": [
+            "SYNTAXE"
+        ],
+        "categories": [
+            "SMAN"
+        ]
+    },
+    {
+        "sentence": "Pour faire des études à l’étranger, il faut apprendre une nouvelle langue qui signifie qu’on peut savoir des cultures des autres pays.",
+        "macro_categories": [
+            "SYNTAXE"
+        ],
+        "categories": [
+            "SMAN"
+        ]
+    },
+    {
+        "sentence": "Je pense que c’est plutôt intéressant.",
+        "macro_categories": [],
+        "categories": []
+    },
+    {
+        "sentence": "Je prends des exemples des étudiants chinois.",
+        "macro_categories": [],
+        "categories": []
+    },
+    {
+        "sentence": "Quand ils apprends une langue nouvelle comme l’anglais et français, ils peuvent aussi acquérir des connaissances de culture occidentale qui est vraiment différente que la civilisation chinoise.",
+        "macro_categories": [
+            "GRAMMAIRE",
+            "ORTHOGRAPHE",
+            "SYNTAXE"
+        ],
+        "categories": [
+            "GACC",
+            "OSUB",
+            "SMAN"
+        ]
+    },
+    {
+        "sentence": "C’est pendant cette période qu’ils peut ouvrir la horizon.",
+        "macro_categories": [
+            "GRAMMAIRE"
+        ],
+        "categories": [
+            "GACC"
+        ]
+    },
+    {
+        "sentence": "Ensuite, quand les étudiants arrivent à l’étranger sans l’accompagnement de leur parents, ils doivent devenir plus indépendants.",
+        "macro_categories": [
+            "GRAMMAIRE"
+        ],
+        "categories": [
+            "GACC"
+        ]
+    },
+    {
+        "sentence": "Ils doivent cuisiner, faire le ménage par soi-mêmes.",
+        "macro_categories": [
+            "GRAMMAIRE"
+        ],
+        "categories": [
+            "GACC"
+        ]
+    },
+    {
+        "sentence": "Pour s’intégrer aux étudiants natales, il faut plus courageux.",
+        "macro_categories": [
+            "FORME",
+            "SYNTAXE"
+        ],
+        "categories": [
+            "FAGL",
+            "SMAN"
+        ]
+    },
+    {
+        "sentence": "C’est après avoir conquérir ces problème qu’on va grandir.",
+        "macro_categories": [
+            "GRAMMAIRE"
+        ],
+        "categories": [
+            "GACC",
+            "GCON"
+        ]
+    },
+    {
+        "sentence": "Malgré des problèmes financière ou sécuritaires, à mon avis, partir étudier à l’étranger a plus davantages que désavantage, c’est plutôt une bonne idée d’acquérir des connaissances différents et d’avoir une expérience excellente. - - - Partir étudier à l’étranger, pour ou contre?",
+        "macro_categories": [
+            "FORME",
+            "GRAMMAIRE",
+            "SYNTAXE"
+        ],
+        "categories": [
+            "FAGL",
+            "GACC",
+            "SMAN"
+        ]
+    },
+    {
+        "sentence": "De nos jours, avec le développement du transport et nos curiosité croissante de découvrir le nouveau monde, partir étudier à l’étranger devient un phénomène banal.",
+        "macro_categories": [
+            "GRAMMAIRE"
+        ],
+        "categories": [
+            "GACC"
+        ]
+    },
+    {
+        "sentence": "Cela nous amène à nous interroger si l’engouement pour ce déplacement apporte plus d’avantages que les inconvénients?",
+        "macro_categories": [
+            "ORTHOGRAPHE"
+        ],
+        "categories": [
+            "OSUB"
+        ]
+    },
+    {
+        "sentence": "Tous d’abord, la solitude et la nostalgie pèse inévitablement car le sentiment d’être mis à l’écart est répandu chez les étudiants étrangers.",
+        "macro_categories": [
+            "GRAMMAIRE",
+            "ORTHOGRAPHE"
+        ],
+        "categories": [
+            "GACC",
+            "OSUB"
+        ]
+    },
+    {
+        "sentence": "Par exemple, la plupart de mes amis se plaignent de la difficulté à s’intégrer à la xxxxx et quelques-uns deviennent de plus en plus renfermés.",
+        "macro_categories": [],
+        "categories": []
+    },
+    {
+        "sentence": "Ensuite la barrière de langue joue non seulement sur nos études mais aussi sur la vie communautaire car un échanges difficile avec ceux qui nous entourent pose un obstacle constant.",
+        "macro_categories": [
+            "GRAMMAIRE",
+            "PONCTUATION",
+            "SYNTAXE"
+        ],
+        "categories": [
+            "GACC",
+            "PONC",
+            "SMAN"
+        ]
+    },
+    {
+        "sentence": "De plus, il faut prendre du temps pour nous acculturer du fait qu’il existe une grande disparité entre les pays différents.",
+        "macro_categories": [
+            "SYNTAXE"
+        ],
+        "categories": [
+            "SORD"
+        ]
+    },
+    {
+        "sentence": "En ce qui me concerne, j’ai encore une faible pour la nourriture asiatique et j’ai du mal à comprendre la mentalité française.",
+        "macro_categories": [
+            "GRAMMAIRE"
+        ],
+        "categories": [
+            "GACC"
+        ]
+    },
+    {
+        "sentence": "Enfin, nous devons avouer que le coût de la vie est relativement élevé dans un pays développé et que le fait que le prix inabordable fait repousser un étudiant étranger n’est pas rare.",
+        "macro_categories": [],
+        "categories": []
+    },
+    {
+        "sentence": "Néanmoins, il existe aussi des avantages non négligeables et qui investiront sur notre futur.",
+        "macro_categories": [],
+        "categories": []
+    },
+    {
+        "sentence": "Cette immersion totale dans un autre pays nous permet de mieux apprendre sa langue et sa culture parce que nous apprenons sur le tas et que nos expérience et nos connaissance ne se confinent plus aux manuels scolaire ou aux actualités.",
+        "macro_categories": [
+            "GRAMMAIRE"
+        ],
+        "categories": [
+            "GACC"
+        ]
+    },
+    {
+        "sentence": "En outre, toutes les difficultés que nous avons mentionnées nous obligent de nous débrouiller, d’être indépendants, autonomes et persévérants car l’environnement peut modifier nos personnalités et former nos qualité.",
+        "macro_categories": [
+            "GRAMMAIRE"
+        ],
+        "categories": [
+            "GACC"
+        ]
+    },
+    {
+        "sentence": "Pour ma part, je surmonte progressivement ma timidité grâce aux exposés et au travail du groupe.",
+        "macro_categories": [
+            "GRAMMAIRE",
+            "ORTHOGRAPHE"
+        ],
+        "categories": [
+            "GACC",
+            "OSUB"
+        ]
+    },
+    {
+        "sentence": "Enfin, d’un point de vue utilitaire, cette expérience à l’étranger est un atout qui peut nous aider à trouver un bon emploi parce que les grandes sociétés donne la priorité à ceux qui ont un esprit multi culturel.",
+        "macro_categories": [
+            "FORME",
+            "GRAMMAIRE"
+        ],
+        "categories": [
+            "FAGL",
+            "GACC"
+        ]
+    },
+    {
+        "sentence": "Pour conclure, partir étudier à l’étranger est à double tranchant.",
+        "macro_categories": [],
+        "categories": []
+    },
+    {
+        "sentence": "D’un côté, la solitude, la langue, l’habitude différentes et le coût de vie nous pose des problème, d’un autre côté, nous pouvons mieux nous épanouir grâce à cette immersion extraordinaire et cette expérience gratifiante. - - - Partir étudier à l’étranger, pour ou contre?",
+        "macro_categories": [
+            "GRAMMAIRE",
+            "SYNTAXE"
+        ],
+        "categories": [
+            "GACC",
+            "SMAN"
+        ]
+    },
+    {
+        "sentence": "Avec l’avènement de la mondialisation, faire des études à l’étranger n’est plus un projet irréaliste.",
+        "macro_categories": [],
+        "categories": []
+    },
+    {
+        "sentence": "Mais en même temps, il existe une voix qui s’élève contre le déplacement et insiste sur les contraintes qu’étudier à l’étranger peuvent opporte.",
+        "macro_categories": [
+            "ORTHOGRAPHE"
+        ],
+        "categories": [
+            "OSUB"
+        ]
+    },
+    {
+        "sentence": "En conséquence, nous allons demander si le séjour à l’étranger avec le but professionnel est un atout pour le développement personnel ou bien il entraîne de protéiformes difficultés pour les étudiants, voire des familles.",
+        "macro_categories": [
+            "ORTHOGRAPHE",
+            "SYNTAXE"
+        ],
+        "categories": [
+            "OINS",
+            "OSUB",
+            "SMAN",
+            "SORD"
+        ]
+    },
+    {
+        "sentence": "Avant tout, le coût élevé et parfois astronmique reste l’argument phare aux yeux des opposants.",
+        "macro_categories": [
+            "ORTHOGRAPHE"
+        ],
+        "categories": [
+            "OMAN"
+        ]
+    },
+    {
+        "sentence": "En mettant en considération l’aspect financier de la famille.",
+        "macro_categories": [],
+        "categories": []
+    },
+    {
+        "sentence": "Ils s’inquiètent plus de la dégringolade de qualité de vie au sein du cercle familial à cause des sommes considérables versées pour les frais d’instruction et les pensions chaque années.",
+        "macro_categories": [
+            "GRAMMAIRE",
+            "SYNTAXE"
+        ],
+        "categories": [
+            "GACC",
+            "SMAN"
+        ]
+    },
+    {
+        "sentence": "En outre, les mœurs étrangers à la fois alimentaires et aussi culturels qui ne sont pas propres aux étudiants étrangers pourraient plonger les non-natifs dans les malentendus liés à cette différence.",
+        "macro_categories": [
+            "GRAMMAIRE",
+            "ORTHOGRAPHE"
+        ],
+        "categories": [
+            "GACC",
+            "OSUB"
+        ]
+    },
+    {
+        "sentence": "Si l’on s’en tient à un seul exemple, c’est le cas de salutation.",
+        "macro_categories": [
+            "SYNTAXE"
+        ],
+        "categories": [
+            "SMAN"
+        ]
+    },
+    {
+        "sentence": "En France, « dire bonjour » ne se cantonne pas à nos connaissances, en revanche, ce rituel de salutation s’étend aussi naturellement aux inconnus.",
+        "macro_categories": [],
+        "categories": []
+    },
+    {
+        "sentence": "Toutefois, les chinois n’ont pas l’habitude de saluer ceux que l’on ne connait pas.",
+        "macro_categories": [],
+        "categories": []
+    },
+    {
+        "sentence": "Malgré les opinions opposantes, les défenseurs sont quand même fermes dans leur position.",
+        "macro_categories": [],
+        "categories": []
+    },
+    {
+        "sentence": "D’abord, il est préférable pour les apprenants de langue de s’immerger totalement dans « le bain linguistique » en vue de se perfectionner la langue cible.",
+        "macro_categories": [
+            "SYNTAXE"
+        ],
+        "categories": [
+            "SMAN"
+        ]
+    },
+    {
+        "sentence": "Par ailleurs, l’occasion de rencontrer des gens issus de différents pays et embrasser les xxxxx xxxx diversité inouïe constitue aussi un facteur attractif pour les étudiants.",
+        "macro_categories": [
+            "GRAMMAIRE"
+        ],
+        "categories": [
+            "GACC"
+        ]
+    },
+    {
+        "sentence": "Les échanges avec les natifs aident donc d’élargir les horizons et de s’écarter de l’esprit borné.",
+        "macro_categories": [],
+        "categories": []
+    },
+    {
+        "sentence": "Au bout du compte, pour toutes les raisons que nous avons évoquées, je suis convaincue que faire des études à l’étranger a encore de beaux jours devant moi et on ne peut que s’en réjouir et souhaiter la bonne continuité de son développement. - - - Partir étudier à l’étranger, pour ou contre?",
+        "macro_categories": [
+            "ORTHOGRAPHE"
+        ],
+        "categories": [
+            "OSUB"
+        ]
+    },
+    {
+        "sentence": "En ce qui concerne cette question, je suis pour.",
+        "macro_categories": [],
+        "categories": []
+    },
+    {
+        "sentence": "À mon avis, étudier à l’étranger, c’est les échanges qui sont plus important que les études.",
+        "macro_categories": [
+            "GRAMMAIRE"
+        ],
+        "categories": [
+            "GACC"
+        ]
+    },
+    {
+        "sentence": "Autrement dit, les études sont seulement une partie des échanges.",
+        "macro_categories": [],
+        "categories": []
+    },
+    {
+        "sentence": "Par exemple, si l’on fait les études à l’étranger, on devrait discuter ou changer d’avis sur les cours avec les camarades qui viennent de différents pays.",
+        "macro_categories": [
+            "ORTHOGRAPHE"
+        ],
+        "categories": [
+            "OSUB"
+        ]
+    },
+    {
+        "sentence": "Donc, ce processus est un échange linguistique.",
+        "macro_categories": [],
+        "categories": []
+    },
+    {
+        "sentence": "Sauf les échanges linguistiques, nous avons faire des amis, peut-être les amis internationaux ou les amis natifs.",
+        "macro_categories": [
+            "GRAMMAIRE",
+            "ORTHOGRAPHE"
+        ],
+        "categories": [
+            "GCON",
+            "OSUB"
+        ]
+    },
+    {
+        "sentence": "Lors des contacts avec eux, nous ferons les échanges culturels, cela nous fait étendre notre horizon.",
+        "macro_categories": [
+            "GRAMMAIRE",
+            "ORTHOGRAPHE"
+        ],
+        "categories": [
+            "GCON",
+            "OSUB"
+        ]
+    },
+    {
+        "sentence": "Par conséquent, étudier à l’étranger peut nous ramener les échanges, n’importe les échanges linguistiques ou dans la vie personnelle.",
+        "macro_categories": [],
+        "categories": [
+            "SMAN"
+        ]
+    },
+    {
+        "sentence": "Partir étudier à l’étranger, pour ou contre?",
+        "macro_categories": [],
+        "categories": []
+    },
+    {
+        "sentence": "De nos jours, les pays européennes ouvrent ses frontières pour les étudiants des universités.",
+        "macro_categories": [
+            "GRAMMAIRE"
+        ],
+        "categories": [
+            "GACC"
+        ]
+    },
+    {
+        "sentence": "D’un côté, ce phénomène passe pour bénéfique de l’autre il est critiqué.",
+        "macro_categories": [
+            "PONCTUATION"
+        ],
+        "categories": [
+            "PONC"
+        ]
+    },
+    {
+        "sentence": "Premièrement, les jeunes qui décident d’étudier à l’étranger, obtiennent la possibilité de connaître une autre culture.",
+        "macro_categories": [
+            "PONCTUATION"
+        ],
+        "categories": [
+            "PONC"
+        ]
+    },
+    {
+        "sentence": "Ils ont forcés de vivre dans un pays qui possède différents coutûmes et tradictions.",
+        "macro_categories": [
+            "FORME",
+            "GRAMMAIRE",
+            "ORTHOGRAPHE"
+        ],
+        "categories": [
+            "FDIA",
+            "GACC",
+            "GCON",
+            "OINS"
+        ]
+    },
+    {
+        "sentence": "Les étudiants sont donc forcés d’apprendre comment vivre avec les autres, comment les respecter et comment être tolerants et en même temps garder ses propres identités.",
+        "macro_categories": [
+            "FORME"
+        ],
+        "categories": [
+            "FDIA"
+        ]
+    },
+    {
+        "sentence": "Deuxiémement, aller à l’étranger donne l’opportunité d’apprendre une nouvelle langue.",
+        "macro_categories": [
+            "FORME"
+        ],
+        "categories": [
+            "FDIA"
+        ]
+    },
+    {
+        "sentence": "Les étudiants participent aux cours en langue maternelle d’un pays choisi.",
+        "macro_categories": [],
+        "categories": []
+    },
+    {
+        "sentence": "En plus, ils utilisent la langue dans les situations cotidiennes, ils développent donc les capacités linguistiques et sociaux.",
+        "macro_categories": [
+            "GRAMMAIRE",
+            "ORTHOGRAPHE"
+        ],
+        "categories": [
+            "GACC",
+            "OSUB"
+        ]
+    },
+    {
+        "sentence": "En plus, quelque mois passé à l’étranger sans aide des parents, peuvent améliorer les capacités de se débrouiller dans les situations difficiles.",
+        "macro_categories": [
+            "GRAMMAIRE",
+            "PONCTUATION"
+        ],
+        "categories": [
+            "GACC",
+            "PONC"
+        ]
+    },
+    {
+        "sentence": "Les étudiant ont forcé de résoudre les problèmes touts seuls ils deviennent donc plus matturés, responsables et independables.",
+        "macro_categories": [
+            "FORME",
+            "GRAMMAIRE",
+            "ORTHOGRAPHE"
+        ],
+        "categories": [
+            "FAGL",
+            "GACC",
+            "GCON",
+            "OINS"
+        ]
+    },
+    {
+        "sentence": "Par contre, beaucoup de gens critiquent l’idée d’étudier à l’étranger.",
+        "macro_categories": [],
+        "categories": []
+    },
+    {
+        "sentence": "Ils pensent que les échanges internationelles donnent seulement la possibilité de voyager et faire les fêtes et que le niveau d’apprentissage et vraiement bas.",
+        "macro_categories": [
+            "FORME",
+            "ORTHOGRAPHE"
+        ],
+        "categories": [
+            "FAGL",
+            "OINS",
+            "OMAN"
+        ]
+    },
+    {
+        "sentence": "A mon avis, l’étudier à l’étranger peut être une grande aventure pleins de bénéfits interpersonnells et aussi intrapersonnells si les étudiants sont concentrés sur l’apprantissage et sur l’ouverture aux autres cultures. - - - Pour ou contre l’ouverture dominicale des commerces?",
+        "macro_categories": [
+            "FORME",
+            "GRAMMAIRE",
+            "ORTHOGRAPHE"
+        ],
+        "categories": [
+            "FDIA",
+            "GACC",
+            "OINS",
+            "OSUB"
+        ]
+    },
+    {
+        "sentence": "Aujourd’hui, nous avons beaucoup de possibilités et presque toutes les branches nous essayent de rendre la vie plus facile.",
+        "macro_categories": [
+            "SYNTAXE"
+        ],
+        "categories": [
+            "SORD"
+        ]
+    },
+    {
+        "sentence": "Depuis quelques année, faire des achats le dimanche est le quotidient de nombreuses de personnes.",
+        "macro_categories": [
+            "GRAMMAIRE",
+            "ORTHOGRAPHE",
+            "SYNTAXE"
+        ],
+        "categories": [
+            "GACC",
+            "OINS",
+            "SINS"
+        ]
+    },
+    {
+        "sentence": "Mais, est-ce que l’ouverture dominical de commerces est nécessaire?",
+        "macro_categories": [
+            "GRAMMAIRE",
+            "ORTHOGRAPHE"
+        ],
+        "categories": [
+            "GACC",
+            "OMAN"
+        ]
+    },
+    {
+        "sentence": "Premièrement, pour beaucoup de gens, le dimanche est un jour de repos.",
+        "macro_categories": [],
+        "categories": []
+    },
+    {
+        "sentence": "Ils passent du temps avec la famille et des amis.",
+        "macro_categories": [],
+        "categories": []
+    },
+    {
+        "sentence": "Ils organisent des voyages, visitent des grands-parents et ils ne gaspillent pas de temps dans les magasins.",
+        "macro_categories": [],
+        "categories": []
+    },
+    {
+        "sentence": "Deuxièmement, pour les catholiques le dimanche est un jour saint.",
+        "macro_categories": [
+            "PONCTUATION"
+        ],
+        "categories": [
+            "PONC"
+        ]
+    },
+    {
+        "sentence": "Ils ne travaillent pas, ils passent du temps avec la famille, ils se reposent et ils vont assister à la messe.",
+        "macro_categories": [],
+        "categories": []
+    },
+    {
+        "sentence": "De plus, nous devons se rappeler des personnes qui travaillent dans les magasins.",
+        "macro_categories": [
+            "GRAMMAIRE"
+        ],
+        "categories": [
+            "GCON"
+        ]
+    },
+    {
+        "sentence": "Ils ont besoin du temps avec la famille et du repos comme tous.",
+        "macro_categories": [],
+        "categories": []
+    },
+    {
+        "sentence": "Il faut respecter leur temps.",
+        "macro_categories": [],
+        "categories": []
+    },
+    {
+        "sentence": "D’autre part, il y a beaucoup de gens qui travaillent chaque jour et ils n’ont pas de temps pour les devoirs à la maison.",
+        "macro_categories": [],
+        "categories": []
+    },
+    {
+        "sentence": "Donc, la possibilité d’aller aux magasins le dimanche est très confortable pour eux.",
+        "macro_categories": [],
+        "categories": []
+    },
+    {
+        "sentence": "En plus, l’ouverture dominicale des commerces est un bénéfice supplémentaire pour les vendeurs.",
+        "macro_categories": [],
+        "categories": []
+    },
+    {
+        "sentence": "Ils peuvent gagner plus d’argent et les affaires prospèrent meiux.",
+        "macro_categories": [
+            "ORTHOGRAPHE"
+        ],
+        "categories": [
+            "OORD"
+        ]
+    },
+    {
+        "sentence": "A mon avis, l’ouverture dominicale des commerces a ses avantages et desavantages.",
+        "macro_categories": [
+            "FORME"
+        ],
+        "categories": [
+            "FDIA"
+        ]
+    },
+    {
+        "sentence": "D’une part, c’est une grand facilité pour les gens, d’autre part, c’est un sacrifice des autres. - - - Que pensez-vous du réchauffement climatique?",
+        "macro_categories": [
+            "GRAMMAIRE"
+        ],
+        "categories": [
+            "GACC"
+        ]
+    },
+    {
+        "sentence": "Aujourd’hui, on parle de plus en plus du réchauffement climatique.",
+        "macro_categories": [],
+        "categories": []
+    },
+    {
+        "sentence": "Les gouvernements européens des pays membres de l’UE s’intéressent beaucoup à la question des changements climatiques dans le monde entier.",
+        "macro_categories": [],
+        "categories": []
+    },
+    {
+        "sentence": "Les institution européennes font chaque année les lois et directives qui devaient être implementer dans les systèmes legislatives des tous les pays membres de l’UE.",
+        "macro_categories": [
+            "GRAMMAIRE",
+            "ORTHOGRAPHE"
+        ],
+        "categories": [
+            "GACC",
+            "GCON",
+            "OINS",
+            "OSUB"
+        ]
+    },
+    {
+        "sentence": "Néanmois, les pays de l’Europe Centrale comme la Pologne ou la République Tschèque dont la politique xxx se base aux centrales charboniques, ne s’accordent pas avec ces directives imposées par les pays développés comme la France ou l’Allemagne.",
+        "macro_categories": [
+            "FORME",
+            "ORTHOGRAPHE"
+        ],
+        "categories": [
+            "FMAJ",
+            "OINS",
+            "OMAN"
+        ]
+    },
+    {
+        "sentence": "Moi, je suis un spécialiste dans ce domaine et je partage l’opinion des gouvernements des pays de la « nouvelle » UE.",
+        "macro_categories": [],
+        "categories": []
+    },
+    {
+        "sentence": "Je ne nie pas que le climat a changé depuis la révolution industrielle, commencée à la fin du XVIIIème sciècle.",
+        "macro_categories": [
+            "ORTHOGRAPHE"
+        ],
+        "categories": [
+            "OINS"
+        ]
+    },
+    {
+        "sentence": "L’augmentation d’emission des gaz d’échappement a causé l’augmentation de la température moyenne mais on ne sait pas combien cette température aurait augmenté sauf l’influence de l’industrie.",
+        "macro_categories": [
+            "FORME",
+            "SYNTAXE"
+        ],
+        "categories": [
+            "FDIA",
+            "SMAN"
+        ]
+    },
+    {
+        "sentence": "D’un autre côté, certains chercheurs constatent que nous vivons maintenant à la fin de l’époque glaciale et c’est normale que la température va augmenter.",
+        "macro_categories": [
+            "ORTHOGRAPHE"
+        ],
+        "categories": [
+            "OINS"
+        ]
+    },
+    {
+        "sentence": "Il faut toujours trouver un équilibre. - - - Partir étudier à l’étranger, pour ou contre?",
+        "macro_categories": [],
+        "categories": []
+    },
+    {
+        "sentence": "Vu que je suis un des étudiants qui est parti étudier à l’étranger je suis totalement pour les études dehors de son pays.",
+        "macro_categories": [
+            "PONCTUATION",
+            "SYNTAXE"
+        ],
+        "categories": [
+            "PONC",
+            "SMAN"
+        ]
+    },
+    {
+        "sentence": "Il y a des bonnes et mauvaises côtés.",
+        "macro_categories": [
+            "GRAMMAIRE"
+        ],
+        "categories": [
+            "GACC"
+        ]
+    },
+    {
+        "sentence": "Au niveau des finances cela peut être difficile pour les personnes qui ne sont pas assez « riches » pour partir.",
+        "macro_categories": [
+            "PONCTUATION"
+        ],
+        "categories": [
+            "PONC"
+        ]
+    },
+    {
+        "sentence": "Néamoins d’après moi il y a plus des côtés positives et c’est pour cela que je conseille d’étudier à l’étranger.",
+        "macro_categories": [
+            "GRAMMAIRE",
+            "ORTHOGRAPHE",
+            "PONCTUATION"
+        ],
+        "categories": [
+            "GACC",
+            "OINS",
+            "OMAN",
+            "PONC"
+        ]
+    },
+    {
+        "sentence": "Premièrement on peut connaitre des différentes méthodes d’apprentissage.",
+        "macro_categories": [
+            "PONCTUATION",
+            "SYNTAXE"
+        ],
+        "categories": [
+            "PONC",
+            "SRED"
+        ]
+    },
+    {
+        "sentence": "Très souvent, il arrive que les professeurs de tel ou tel pays ont des systèmes pareils – ce-t-à dire les méthodes qu’ils ont appris pendant sa éducation à l’école.",
+        "macro_categories": [
+            "GRAMMAIRE"
+        ],
+        "categories": [
+            "GCON",
+            "PONC"
+        ]
+    },
+    {
+        "sentence": "En plus, les enseignents en France, par exemple xxxxxx.",
+        "macro_categories": [
+            "ORTHOGRAPHE"
+        ],
+        "categories": [
+            "OSUB"
+        ]
+    },
+    {
+        "sentence": "Les universités des pays riches, comme la France, l’Allemagne ou l’Angleterre ont plus d’argent pour des recherches que le Pologne.",
+        "macro_categories": [
+            "GRAMMAIRE"
+        ],
+        "categories": [
+            "GACC"
+        ]
+    },
+    {
+        "sentence": "Pour les personnes qui veulent développer son savoir ce sont les pays plus convenables.",
+        "macro_categories": [
+            "PONCTUATION",
+            "SYNTAXE"
+        ],
+        "categories": [
+            "PONC",
+            "SMAN"
+        ]
+    },
+    {
+        "sentence": "En partent à l’étranger on connait une nouvelle culture, des gens des différent pays et leurs habitudes.",
+        "macro_categories": [
+            "GRAMMAIRE",
+            "ORTHOGRAPHE",
+            "PONCTUATION"
+        ],
+        "categories": [
+            "GACC",
+            "GCON",
+            "OINS",
+            "PONC"
+        ]
+    },
+    {
+        "sentence": "Tout peut semble être complétement différent : le façon de xxx, la musique, l’architecture, etc.",
+        "macro_categories": [
+            "FORME",
+            "GRAMMAIRE",
+            "SYNTAXE"
+        ],
+        "categories": [
+            "FDIA",
+            "GACC",
+            "SRED"
+        ]
+    },
+    {
+        "sentence": "On peut en profiter.",
+        "macro_categories": [],
+        "categories": []
+    },
+    {
+        "sentence": "Les gens qui vivent dans un seul pays ne connaissent pas autre vie.",
+        "macro_categories": [
+            "SYNTAXE"
+        ],
+        "categories": [
+            "SMAN"
+        ]
+    },
+    {
+        "sentence": "Ils peuvent essayer de vivre avec des petits « modifications » qui xxx le vie.",
+        "macro_categories": [
+            "GRAMMAIRE"
+        ],
+        "categories": [
+            "GACC"
+        ]
+    },
+    {
+        "sentence": "En plus, après avoir connaître quelqu’un de Japon ou bien Australie on peut y aller rendre visite et … connaitre un autre pays.",
+        "macro_categories": [
+            "GRAMMAIRE",
+            "ORTHOGRAPHE",
+            "SYNTAXE"
+        ],
+        "categories": [
+            "GCON",
+            "OSUB",
+            "SINS",
+            "SMAN"
+        ]
+    },
+    {
+        "sentence": "Pour conclure, je conseille à chaque personne qui hésite de partir étudier de le faire.",
+        "macro_categories": [],
+        "categories": []
+    },
+    {
+        "sentence": "Si elle ne l’aime pas elle peut toujours rentrer mais au moins elle à fait tout ce qui est possible d’essayer. - - - Pour ou contre le travail à distance?",
+        "macro_categories": [
+            "FORME",
+            "PONCTUATION"
+        ],
+        "categories": [
+            "FDIA",
+            "PONC"
+        ]
+    },
+    {
+        "sentence": "Traditionnellement, les travailleurs exerçaient leurs tâches professionnelles même chez soi, dans les ateliers aménagés dans leurs maisons.",
+        "macro_categories": [],
+        "categories": []
+    },
+    {
+        "sentence": "Une autre situation a lieu au moment où le travailleur quitte sa maison pour aller travailler.",
+        "macro_categories": [],
+        "categories": []
+    },
+    {
+        "sentence": "Habituellement, les employés vont travailler dans le siège de l’entreprise qui les embauche.",
+        "macro_categories": [],
+        "categories": []
+    },
+    {
+        "sentence": "Cependant, le développement des nouveaux moyens de communication permet de travailler à distance – à partir de chez soi, par exemple.",
+        "macro_categories": [],
+        "categories": []
+    },
+    {
+        "sentence": "Il arrive que l’employeur et l’employé ne se rencontrent pas personnellement mais ils se communiquent à distance.",
+        "macro_categories": [
+            "SYNTAXE"
+        ],
+        "categories": [
+            "SINS"
+        ]
+    },
+    {
+        "sentence": "L’employé reçoit des tâches et renvoie les résultats de son travail au patron.",
+        "macro_categories": [],
+        "categories": []
+    },
+    {
+        "sentence": "Ce système de travail-là permet au travailleur de gérer le temps de son travail par soi-même et de travailler dans plusieurs lieux.",
+        "macro_categories": [],
+        "categories": []
+    },
+    {
+        "sentence": "Le travailleur peut commencer et terminer son travail quand il le juge convenable, ou à peu près.",
+        "macro_categories": [],
+        "categories": []
+    },
+    {
+        "sentence": "Il peut aussi exercer son travail là où il veut, et cela lui donne la liberté de se déplacer.",
+        "macro_categories": [],
+        "categories": []
+    },
+    {
+        "sentence": "C’est un système qui pourrait convenir aux jeunes mères qui ont des enfants très petits, pour les étudiants qui voudraient gagner l’argent.",
+        "macro_categories": [
+            "SYNTAXE"
+        ],
+        "categories": [
+            "SMAN"
+        ]
+    },
+    {
+        "sentence": "L’inconvenient du travail à distance est que le travail est fait à la maison et c’est au travailleur de déterminer son temps de travail.",
+        "macro_categories": [
+            "FORME"
+        ],
+        "categories": [
+            "FDIA"
+        ]
+    },
+    {
+        "sentence": "C’est difficile.",
+        "macro_categories": [],
+        "categories": []
+    },
+    {
+        "sentence": "En concluant, c’est très bien d’avoir le choix car ce mode d’exercer le travail donne de nouvelles possibilités à tous.",
+        "macro_categories": [],
+        "categories": []
+    },
+    {
+        "sentence": "Partir étudier à l’étranger, pour ou contre?",
+        "macro_categories": [],
+        "categories": []
+    },
+    {
+        "sentence": "Pour moi étudier à l’étranger c’est une bonne idée, c’est une bonne occasion d’apprendre la langue étrangère.",
+        "macro_categories": [],
+        "categories": []
+    },
+    {
+        "sentence": "Naturellement, il y a beaucoup d’avantage et défauts.",
+        "macro_categories": [
+            "GRAMMAIRE"
+        ],
+        "categories": [
+            "GACC"
+        ]
+    },
+    {
+        "sentence": "Départ à l’étranger pour étudier permet connaître l’histoire et la culture de pays, les mœurs des gens, visiter les villes et évidemment d’apprendre une langue.",
+        "macro_categories": [
+            "ORTHOGRAPHE",
+            "SYNTAXE"
+        ],
+        "categories": [
+            "OSUB",
+            "SMAN"
+        ]
+    },
+    {
+        "sentence": "C’est une bonne occasion pour rencontrer nouveaux amis.",
+        "macro_categories": [
+            "SYNTAXE"
+        ],
+        "categories": [
+            "SMAN"
+        ]
+    },
+    {
+        "sentence": "Nous pouvons d’avoir excellents moments.",
+        "macro_categories": [],
+        "categories": []
+    },
+    {
+        "sentence": "Nous avons beaucoup d’occasion pour utiliser langue étrangère, p.ex. communiquer avec vendeurs dans le magasin, etc.",
+        "macro_categories": [
+            "GRAMMAIRE",
+            "SYNTAXE"
+        ],
+        "categories": [
+            "GACC",
+            "SMAN"
+        ]
+    },
+    {
+        "sentence": "Je veux aller à l’étranger pour étudier c’est mon rêver. - - - Partir étudier à l’étranger, pour ou contre?",
+        "macro_categories": [
+            "ORTHOGRAPHE",
+            "PONCTUATION"
+        ],
+        "categories": [
+            "OINS",
+            "PONC"
+        ]
+    },
+    {
+        "sentence": "Je pense qu’il y a beaucoup d’avantages d’étudier à l’étranger et quelques défauts.",
+        "macro_categories": [],
+        "categories": []
+    },
+    {
+        "sentence": "Je suis plutôt pour cette idée, parce que je crois que c’est le meilleur façon d’apprendre la langue étrangère.",
+        "macro_categories": [
+            "GRAMMAIRE"
+        ],
+        "categories": [
+            "GACC"
+        ]
+    },
+    {
+        "sentence": "Ça permet de connaitre la langue avec la culture, l’histoire et tout ce qui est important dans ce pays.",
+        "macro_categories": [],
+        "categories": []
+    },
+    {
+        "sentence": "Pour connaitre bien la langue il faut parler avec les gens qui vivent là-bas.",
+        "macro_categories": [
+            "PONCTUATION",
+            "SYNTAXE"
+        ],
+        "categories": [
+            "PONC",
+            "SORD"
+        ]
+    },
+    {
+        "sentence": "C’est une bonne occasion pour rencontrer nouveaux amis, établir nouveaux contacts et pour connaitre d’autres cultures.",
+        "macro_categories": [
+            "SYNTAXE"
+        ],
+        "categories": [
+            "SMAN"
+        ]
+    },
+    {
+        "sentence": "Les études à l’étranger peuvent nous aider à forcer la peur.",
+        "macro_categories": [],
+        "categories": []
+    },
+    {
+        "sentence": "Je pense que grâce aux voyages nous ouvrions sur le monde et nous voulons se développer.",
+        "macro_categories": [
+            "GRAMMAIRE",
+            "SYNTAXE"
+        ],
+        "categories": [
+            "GCON",
+            "SMAN"
+        ]
+    },
+    {
+        "sentence": "Je pense que le défaut de cette idée est la longuer après la famille et la maison. - - - Partir étudier à l’étranger, pour ou contre?",
+        "macro_categories": [
+            "ORTHOGRAPHE"
+        ],
+        "categories": [
+            "OMAN"
+        ]
+    },
+    {
+        "sentence": "Aujourd’hui être bilingue est une nécessité pour obtenir une travaille ou pour communicai en vacances à l’étranger.",
+        "macro_categories": [
+            "GRAMMAIRE",
+            "ORTHOGRAPHE"
+        ],
+        "categories": [
+            "GACC",
+            "OINS",
+            "OSUB"
+        ]
+    },
+    {
+        "sentence": "Et qui de mieux pour apprendre une langue qu’une départ à l’étranger pour étudier.",
+        "macro_categories": [
+            "GRAMMAIRE",
+            "ORTHOGRAPHE"
+        ],
+        "categories": [
+            "GACC",
+            "OMAN"
+        ]
+    },
+    {
+        "sentence": "Vous pouvez pratciquer avec les natifs du pays.",
+        "macro_categories": [
+            "ORTHOGRAPHE"
+        ],
+        "categories": [
+            "OINS"
+        ]
+    },
+    {
+        "sentence": "Grâce à vos études, vous pourrez même posséder un vocabulaire technique propre a un domaine de compètences.",
+        "macro_categories": [
+            "FORME"
+        ],
+        "categories": [
+            "FDIA"
+        ]
+    },
+    {
+        "sentence": "Vous pouvez decouvrir une nouvelle culture, ma modalisation à uniformisé la plupart des cultures mais pas totalement.",
+        "macro_categories": [
+            "FORME",
+            "ORTHOGRAPHE"
+        ],
+        "categories": [
+            "FDIA",
+            "OMAN",
+            "OSUB"
+        ]
+    },
+    {
+        "sentence": "Il y a des autres habitants et aussi les styles de vie que vous pouvez rencontrer.",
+        "macro_categories": [],
+        "categories": []
+    },
+    {
+        "sentence": "Les méthodes pedagogiques ne sont pas les mêmes ailleurs qu’ici, chez vous.",
+        "macro_categories": [
+            "FORME"
+        ],
+        "categories": [
+            "FDIA"
+        ]
+    },
+    {
+        "sentence": "Vous aller adapter à un milieu d’apprentissage où les règles sont différentes.",
+        "macro_categories": [
+            "SYNTAXE"
+        ],
+        "categories": [
+            "SMAN"
+        ]
+    },
+    {
+        "sentence": "Et quand vous accomplissiez cette tâche vous êtres un bon éléve parce que ça signifie que vous êtes capable de correspondre à les exigences des autres.",
+        "macro_categories": [
+            "FORME",
+            "GRAMMAIRE",
+            "ORTHOGRAPHE"
+        ],
+        "categories": [
+            "FDIA",
+            "GACC",
+            "GCON",
+            "OINS"
+        ]
+    },
+    {
+        "sentence": "L’étudier à l’étranger peut valoriser votre CV.",
+        "macro_categories": [],
+        "categories": []
+    },
+    {
+        "sentence": "L’objectif ultime des etudes à l’étranger est de mettre en valeur sa formation.",
+        "macro_categories": [
+            "FORME"
+        ],
+        "categories": [
+            "FDIA"
+        ]
+    },
+    {
+        "sentence": "Des qualités comme bilinguisme est très recherchées dans le monde de travail.",
+        "macro_categories": [
+            "GRAMMAIRE",
+            "ORTHOGRAPHE",
+            "SYNTAXE"
+        ],
+        "categories": [
+            "GACC",
+            "OSUB",
+            "SMAN"
+        ]
+    },
+    {
+        "sentence": "Pour moi partir pour étuder à l’étranger est une option magnifique et j’aimerai faire ça dans la future. - - - Pour ou contre l’enseignement séparé de filles et de garçons?",
+        "macro_categories": [
+            "GRAMMAIRE",
+            "ORTHOGRAPHE"
+        ],
+        "categories": [
+            "GACC",
+            "GCON",
+            "OINS",
+            "OMAN"
+        ]
+    },
+    {
+        "sentence": "Il y a des années, à l’école, les garçons et les filles etaient separés.",
+        "macro_categories": [
+            "FORME"
+        ],
+        "categories": [
+            "FDIA"
+        ]
+    },
+    {
+        "sentence": "Puis, ce model d’éducation a change et maintenant on peut frequenter aux écoles xxxx.",
+        "macro_categories": [
+            "FORME"
+        ],
+        "categories": [
+            "FAGL",
+            "FDIA"
+        ]
+    },
+    {
+        "sentence": "Cette manière d’éducation semble d’être meuilleure et je voudrais presenter ses avantages.",
+        "macro_categories": [
+            "FORME",
+            "ORTHOGRAPHE"
+        ],
+        "categories": [
+            "FDIA",
+            "OINS"
+        ]
+    },
+    {
+        "sentence": "Premièrement, dans la vie quotidienne, les filles et les garçons vivent ensemble, donc la separation pendant l’éducation ne sert à rien.",
+        "macro_categories": [
+            "FORME"
+        ],
+        "categories": [
+            "FDIA"
+        ]
+    },
+    {
+        "sentence": "On se voit dans la rue, on fait beaucoup d’activités ensemble – la séparation est une situation artificiel, contre nature, cela peut causer du stress.",
+        "macro_categories": [
+            "GRAMMAIRE"
+        ],
+        "categories": [
+            "GACC"
+        ]
+    },
+    {
+        "sentence": "Puis, les deux sexes, ont en quelque sort, different manière de penser.",
+        "macro_categories": [
+            "FORME",
+            "GRAMMAIRE",
+            "ORTHOGRAPHE",
+            "PONCTUATION"
+        ],
+        "categories": [
+            "FDIA",
+            "GACC",
+            "OMAN",
+            "PONC"
+        ]
+    },
+    {
+        "sentence": "Les garçons, sont, en général, plus ‘ technique’et les filles plus créative.",
+        "macro_categories": [
+            "GRAMMAIRE",
+            "PONCTUATION"
+        ],
+        "categories": [
+            "GACC",
+            "PONC"
+        ]
+    },
+    {
+        "sentence": "Les premiers enrichissent les autres et à l’envers.",
+        "macro_categories": [
+            "ORTHOGRAPHE"
+        ],
+        "categories": [
+            "OSUB"
+        ]
+    },
+    {
+        "sentence": "En addition, dans un grand groupe des filles des argument sont plus fréquentes et les filles peuvent être beaucoup plus cruelles que les garçons.",
+        "macro_categories": [
+            "GRAMMAIRE",
+            "ORTHOGRAPHE",
+            "PONCTUATION"
+        ],
+        "categories": [
+            "GACC",
+            "OINS",
+            "PONC"
+        ]
+    },
+    {
+        "sentence": "Les garçons sentent un solidarite très fort avec le groupe, pour eux c’est facile de travaille ensemble.",
+        "macro_categories": [
+            "FORME",
+            "GRAMMAIRE"
+        ],
+        "categories": [
+            "FDIA",
+            "GACC",
+            "GCON"
+        ]
+    },
+    {
+        "sentence": "Prenant en considération ce difference, il faut melanger les filles et les garçons pour garder le balance.",
+        "macro_categories": [
+            "FORME",
+            "GRAMMAIRE"
+        ],
+        "categories": [
+            "FDIA",
+            "GACC"
+        ]
+    },
+    {
+        "sentence": "Les garçons et les filles ont des interests differents mais dans certains cas, il y a des individus qui préfèrent des activies d’autre sexe – par egzample un fille qui aime jouer au football où un garçon qui est fou de le mode.",
+        "macro_categories": [
+            "FORME",
+            "GRAMMAIRE",
+            "ORTHOGRAPHE"
+        ],
+        "categories": [
+            "FDIA",
+            "GACC",
+            "OSUB"
+        ]
+    },
+    {
+        "sentence": "Dans un groupe seulement masculine, où seuelemnt feminine des personnes comme cela peuvent être isole, se sentir très mal.",
+        "macro_categories": [
+            "FORME",
+            "GRAMMAIRE",
+            "ORTHOGRAPHE"
+        ],
+        "categories": [
+            "FDIA",
+            "GACC",
+            "OORD"
+        ]
+    },
+    {
+        "sentence": "C’est un autre argument contre l’enseignement séparé.",
+        "macro_categories": [],
+        "categories": []
+    },
+    {
+        "sentence": "A la fin, je voudrais que l’enseignement séparé est un methode vieille qui ne corresponde pas avec le monde moderne.",
+        "macro_categories": [
+            "FORME",
+            "GRAMMAIRE",
+            "SYNTAXE"
+        ],
+        "categories": [
+            "FDIA",
+            "GACC",
+            "GCON",
+            "SMAN",
+            "SORD"
+        ]
+    },
+    {
+        "sentence": "Pour conclusion, les garçons et les filles sont different mais ce sont ces differences qui sont important et qui nous permettent d’être plus sage.",
+        "macro_categories": [
+            "FORME",
+            "GRAMMAIRE"
+        ],
+        "categories": [
+            "FDIA",
+            "GACC"
+        ]
+    },
+    {
+        "sentence": "Par exemple les garçons peuvent apprendre la creativite et les filles peuvent mieux travaille en group.",
+        "macro_categories": [
+            "FORME",
+            "GRAMMAIRE",
+            "ORTHOGRAPHE",
+            "PONCTUATION"
+        ],
+        "categories": [
+            "FDIA",
+            "GCON",
+            "OMAN",
+            "PONC"
+        ]
+    },
+    {
+        "sentence": "On peut profiter beaucoup l’un d’autre.",
+        "macro_categories": [],
+        "categories": []
+    },
+    {
+        "sentence": "Nous vivons ensemble, l’éducation ensemble est n chose naturelle.",
+        "macro_categories": [
+            "ORTHOGRAPHE"
+        ],
+        "categories": [
+            "OMAN"
+        ]
+    },
+    {
+        "sentence": "Je suis contre l’enseignement separe parce que l’enseignement co-educatif peut nous donne beaucoup plus. - - - Partir étudier à l’étranger, pour ou contre?",
+        "macro_categories": [
+            "FORME",
+            "GRAMMAIRE"
+        ],
+        "categories": [
+            "FDIA",
+            "GCON"
+        ]
+    },
+    {
+        "sentence": "Personnellement, je suis pour partir étudier à l’étranger parce que je trouve que c’est une expérince très enrichissante.",
+        "macro_categories": [
+            "ORTHOGRAPHE"
+        ],
+        "categories": [
+            "OMAN"
+        ]
+    },
+    {
+        "sentence": "Tout d’abord, pour bien apprendre une langue il faut la pratiquer tous les jours.",
+        "macro_categories": [
+            "ORTHOGRAPHE"
+        ],
+        "categories": [
+            "PONC"
+        ]
+    },
+    {
+        "sentence": "L’apprentissage de la langue sur place est la meilleure solution pour devenir bilingue.",
+        "macro_categories": [],
+        "categories": []
+    },
+    {
+        "sentence": "Dans la vie professionnelle il est toujours bien vu de parler plusieurs langues mais cela aussi peut faciliter vos voyages, et les rencontres avec des personnes venant d’autres pays.",
+        "macro_categories": [
+            "PONCTUATION",
+            "SYNTAXE"
+        ],
+        "categories": [
+            "PONC",
+            "SORD"
+        ]
+    },
+    {
+        "sentence": "Il peut être intéressant de voir d’autres mode de vie et d’apprendre une nouvelle culture.",
+        "macro_categories": [
+            "GRAMMAIRE"
+        ],
+        "categories": [
+            "GACC"
+        ]
+    },
+    {
+        "sentence": "On s’ouvre au monde et aux autres – on apprend à connaitre une culture en profondeur ex. cinéma, radion, télévision, nourriture, fêtes et vie de tous les jours. - - - Partir étudier à l’étranger, pour ou contre?",
+        "macro_categories": [
+            "ORTHOGRAPHE",
+            "PONCTUATION"
+        ],
+        "categories": [
+            "OINS",
+            "PONC"
+        ]
+    },
+    {
+        "sentence": "D’après moi les études en France ou dans un autre pays étranger est très bon choix pour les personnes qui veulent apprendre un langue étrangère.",
+        "macro_categories": [
+            "PONCTUATION",
+            "SYNTAXE"
+        ],
+        "categories": [
+            "PONC",
+            "SMAN"
+        ]
+    },
+    {
+        "sentence": "Les arguments pour ce sont aussi : rencontrer les nouvelles personnes, visiter le pays, connaître la culture de pays ou nous sommes.",
+        "macro_categories": [
+            "FORME",
+            "ORTHOGRAPHE",
+            "PONCTUATION"
+        ],
+        "categories": [
+            "FDIA",
+            "OSUB",
+            "PONC"
+        ]
+    },
+    {
+        "sentence": "La personne qui étudie à l’étranger a le contact fixe avec une langue et grâce à ça elle peut connaître la langue vive.",
+        "macro_categories": [
+            "FORME",
+            "PONCTUATION"
+        ],
+        "categories": [
+            "FAGL",
+            "PONC"
+        ]
+    },
+    {
+        "sentence": "Malheureusement, cette personne est loin de sa maison elle n’a pas des amies et elle reste sa vie dans le pays maternelle.",
+        "macro_categories": [
+            "GRAMMAIRE",
+            "ORTHOGRAPHE",
+            "PONCTUATION"
+        ],
+        "categories": [
+            "GACC",
+            "OINS",
+            "PONC"
+        ]
+    },
+    {
+        "sentence": "Les coûts de vie sont chèr et c’est difficile pour des personnes qui habitent dans les pays pauvres.",
+        "macro_categories": [
+            "FORME",
+            "ORTHOGRAPHE"
+        ],
+        "categories": [
+            "FDIA",
+            "OSUB"
+        ]
+    },
+    {
+        "sentence": "Parfois la situation dans un pays est difficile et compliquée par exemple la politique ou la situation sociale.",
+        "macro_categories": [
+            "PONCTUATION"
+        ],
+        "categories": [
+            "PONC"
+        ]
+    },
+    {
+        "sentence": "Ce sont des nuances importantes que nous pouvons respectées.",
+        "macro_categories": [
+            "GRAMMAIRE"
+        ],
+        "categories": [
+            "GCON"
+        ]
+    },
+    {
+        "sentence": "En généal il y a beaucoup de qualité quand on part à l’étranger pour apprendre la langue.",
+        "macro_categories": [
+            "GRAMMAIRE",
+            "ORTHOGRAPHE"
+        ],
+        "categories": [
+            "GACC",
+            "OMAN"
+        ]
+    },
+    {
+        "sentence": "La meilleure solution pour très bien connaître la langue c’est séjour dans un autre pays.",
+        "macro_categories": [
+            "SYNTAXE"
+        ],
+        "categories": [
+            "SMAN"
+        ]
+    },
+    {
+        "sentence": "Je recommender les études à l’étranger parce que c’est bon choix. - - - Pensez-vous que tous les musées devraient être gratuits?",
+        "macro_categories": [
+            "GRAMMAIRE",
+            "SYNTAXE"
+        ],
+        "categories": [
+            "GCON",
+            "SMAN"
+        ]
+    },
+    {
+        "sentence": "Il y a des musées qui sont gratuits, mais il y a aussi beaucoup d’eux qui ne sont pas.",
+        "macro_categories": [
+            "SYNTAXE"
+        ],
+        "categories": [
+            "SMAN"
+        ]
+    },
+    {
+        "sentence": "Au même temps il y a de moins en moins de gens qui viennent aux musées.",
+        "macro_categories": [
+            "GRAMMAIRE",
+            "PONCTUATION"
+        ],
+        "categories": [
+            "GACC",
+            "PONC"
+        ]
+    },
+    {
+        "sentence": "Est-ce que tous les musées devraient être gratuits pour encourager les gens à les visiter?",
+        "macro_categories": [],
+        "categories": []
+    },
+    {
+        "sentence": "D’abord, les musées, ou on doit payer pour les visiter sont souvent plus intéressants que ces qui sont gratuits.",
+        "macro_categories": [
+            "FORME",
+            "ORTHOGRAPHE",
+            "PONCTUATION"
+        ],
+        "categories": [
+            "FDIA",
+            "OMAN",
+            "PONC"
+        ]
+    },
+    {
+        "sentence": "Les propriéteurs peuvent faire plus de choses pour atirer les visiteurs, parce q’ils ont plus de l’argent.",
+        "macro_categories": [
+            "FORME",
+            "ORTHOGRAPHE",
+            "SYNTAXE"
+        ],
+        "categories": [
+            "FAGL",
+            "OMAN",
+            "SINS"
+        ]
+    },
+    {
+        "sentence": "D’autre côté les musées gratuits pourraient avoir plus de visiteurs.",
+        "macro_categories": [
+            "PONCTUATION"
+        ],
+        "categories": [
+            "PONC"
+        ]
+    },
+    {
+        "sentence": "Les gens deviendraient plus intéressés à la culture.",
+        "macro_categories": [],
+        "categories": []
+    },
+    {
+        "sentence": "Ça pourrait améliorer la niveau d’éducation en pays.",
+        "macro_categories": [
+            "GRAMMAIRE"
+        ],
+        "categories": [
+            "GACC"
+        ]
+    },
+    {
+        "sentence": "Mais on ne peut pas être sûr que tout le monde veulent visiter les musées qui serait gratuits.",
+        "macro_categories": [
+            "GRAMMAIRE"
+        ],
+        "categories": [
+            "GACC",
+            "GCON"
+        ]
+    },
+    {
+        "sentence": "Maintenant il y a aussi beaucoup d’eux et les gens ne les visitent pas.",
+        "macro_categories": [
+            "PONCTUATION",
+            "SYNTAXE"
+        ],
+        "categories": [
+            "PONC",
+            "SMAN"
+        ]
+    },
+    {
+        "sentence": "En plus, il y a aussi des musées qui sont très populaires malgré que les billets pour les visiter sont chers – par example Auschwitz en Pologne.",
+        "macro_categories": [
+            "ORTHOGRAPHE"
+        ],
+        "categories": [
+            "OSUB"
+        ]
+    },
+    {
+        "sentence": "Si ces musées étaient gratuits, ce serait pas possible de les visiter dans quelques années.",
+        "macro_categories": [],
+        "categories": []
+    },
+    {
+        "sentence": "Je pense, que les musées ne devraient pas être gratuits.",
+        "macro_categories": [
+            "PONCTUATION"
+        ],
+        "categories": [
+            "PONC"
+        ]
+    },
+    {
+        "sentence": "Les propriéteurs doivent avoir l’argent pour les améliorer.",
+        "macro_categories": [
+            "FORME"
+        ],
+        "categories": [
+            "FAGL"
+        ]
+    },
+    {
+        "sentence": "Je crois que les gens qui ne viennent pas aux musées maintenent, n’y viendraient pas s’ils étaient gratuits, parce qu’ils ne sont pas interessés à la culture.",
+        "macro_categories": [
+            "ORTHOGRAPHE"
+        ],
+        "categories": [
+            "OSUB"
+        ]
+    },
+    {
+        "sentence": "C’est aussi mieux de payer quelques euros et visiter le musée qui est en bon état, que voire le musée gratuit qui est négligé. - - - Partir étudier à l’étranger, pour ou contre?",
+        "macro_categories": [
+            "ORTHOGRAPHE"
+        ],
+        "categories": [
+            "OINS"
+        ]
+    },
+    {
+        "sentence": "Partir étudier à l’étranger c’est une bonne idée pour les étudiants de langues et les autres.",
+        "macro_categories": [],
+        "categories": []
+    },
+    {
+        "sentence": "En deux cas, on approfondit la langue et la filière d’études.",
+        "macro_categories": [],
+        "categories": []
+    },
+    {
+        "sentence": "Pour les polonais c’est un peu plus complique d’aller à l’étranger pour étudie parce qu’on a des études gratuites en Pologne.",
+        "macro_categories": [
+            "FORME",
+            "GRAMMAIRE"
+        ],
+        "categories": [
+            "FDIA",
+            "GCON"
+        ]
+    },
+    {
+        "sentence": "A cause de cela, beaucoup de gens restent ici pour faire les etudes.",
+        "macro_categories": [
+            "FORME",
+            "ORTHOGRAPHE"
+        ],
+        "categories": [
+            "FDIA",
+            "OSUB"
+        ]
+    },
+    {
+        "sentence": "C’est un grand desavantage pour les gens pauvres car les études aux Etats Unis ou Angleterre coûtent la fortune.",
+        "macro_categories": [
+            "FORME",
+            "SYNTAXE"
+        ],
+        "categories": [
+            "FDIA",
+            "SMAN"
+        ]
+    },
+    {
+        "sentence": "Parfois les étudiantes n’aiment pas rester aussi loin de leur familles.",
+        "macro_categories": [
+            "GRAMMAIRE"
+        ],
+        "categories": [
+            "GACC"
+        ]
+    },
+    {
+        "sentence": "C’est vrai que dans nouvelle environnement on peut sentir seul très rapide.",
+        "macro_categories": [
+            "FORME",
+            "GRAMMAIRE",
+            "SYNTAXE"
+        ],
+        "categories": [
+            "FAGL",
+            "GACC",
+            "SMAN"
+        ]
+    },
+    {
+        "sentence": "Les étudiantes qui decident aller faire ces études, doivent être préparés pour changement de la culture.",
+        "macro_categories": [
+            "FORME",
+            "PONCTUATION",
+            "SYNTAXE"
+        ],
+        "categories": [
+            "FDIA",
+            "PONC",
+            "SMAN"
+        ]
+    },
+    {
+        "sentence": "C’est-à-dire changement de tous les choses qu’on connait en générale et aussi les choses plus élémentaire comme la nourriture ou le transport en commun.",
+        "macro_categories": [
+            "GRAMMAIRE",
+            "ORTHOGRAPHE",
+            "SYNTAXE"
+        ],
+        "categories": [
+            "GACC",
+            "OINS",
+            "SMAN"
+        ]
+    },
+    {
+        "sentence": "Mais cela fait partie de notre apprentissage des autres cultures, des autres nationalité etc.",
+        "macro_categories": [
+            "GRAMMAIRE"
+        ],
+        "categories": [
+            "GACC"
+        ]
+    },
+    {
+        "sentence": "En générale, je suis pour faire autant des voyages que possible donc je suis aussi « pour » pour aller à l’étranger.",
+        "macro_categories": [
+            "ORTHOGRAPHE",
+            "SYNTAXE"
+        ],
+        "categories": [
+            "OINS",
+            "SRED"
+        ]
+    },
+    {
+        "sentence": "J’ai déjà fait mes études en France donc je peux dire hônnettement que je recommande.",
+        "macro_categories": [
+            "ORTHOGRAPHE"
+        ],
+        "categories": [
+            "OINS"
+        ]
+    },
+    {
+        "sentence": "Les études en France m’ont donné beaucoup et je vais se souvenir cela jusqu’à la fin de ma vie.",
+        "macro_categories": [
+            "GRAMMAIRE",
+            "SYNTAXE"
+        ],
+        "categories": [
+            "GCON",
+            "SMAN"
+        ]
+    },
+    {
+        "sentence": "Je peux dire maintenant que je comprends plus la culture française.",
+        "macro_categories": [],
+        "categories": []
+    },
+    {
+        "sentence": "Je vois bien les différence entre la Pologne et la France.",
+        "macro_categories": [
+            "GRAMMAIRE"
+        ],
+        "categories": [
+            "GACC"
+        ]
+    },
+    {
+        "sentence": "Je peux me communiquer en deux langues étrangères facilement.",
+        "macro_categories": [
+            "SYNTAXE"
+        ],
+        "categories": [
+            "SINS"
+        ]
+    },
+    {
+        "sentence": "J’ai appris beaucoup sur la littérature ou les courants artistiques en France.",
+        "macro_categories": [],
+        "categories": []
+    },
+    {
+        "sentence": "C’était très inspirant de voir, de visiter tout les choses à Paris que j’avais appris pendant des année de mon apprentissage de français.",
+        "macro_categories": [
+            "GRAMMAIRE",
+            "ORTHOGRAPHE"
+        ],
+        "categories": [
+            "GACC",
+            "OSUB"
+        ]
+    }
+]
