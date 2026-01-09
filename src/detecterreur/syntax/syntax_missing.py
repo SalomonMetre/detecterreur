@@ -11,7 +11,7 @@ class SyntaxMissing:
     Category: SYNTAXE
     Error: SMIS
     """
-    error_name = "SMIS"
+    error_name = "SMAN"
     error_category = "SYNTAXE"
 
     def __init__(self, model: str = "fr_core_news_sm"):
