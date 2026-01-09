@@ -2,7 +2,7 @@ from pathlib import Path
 from detecterreur.letter.letter_substitution import LetterSubstitution
 
 def main():
-    ls = LetterSubstitution(distance=1)
+    ls = LetterSubstitution(distance=2)
 
     # Path to testing/letter/letter_substitution.txt
     current_dir = Path(__file__).parent

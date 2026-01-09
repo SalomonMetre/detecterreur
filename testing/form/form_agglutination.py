@@ -3,7 +3,7 @@ from detecterreur.form.form_agglutination import FormAgglutination
 
 def main():
     # Initialize the detector
-    fa = FormAgglutination(distance=1)
+    fa = FormAgglutination()
 
     # robustly find the test file relative to this script
     current_dir = Path(__file__).parent
