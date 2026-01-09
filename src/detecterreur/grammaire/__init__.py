@@ -1,2 +1,0 @@
-from .grammar_conjugation import GrammarConjugation
-from .grammar_euphonic import GrammarEuphonic
